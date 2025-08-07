@@ -279,19 +279,87 @@ code {
   .mobile-card {
     margin: 0.5rem;
   }
+
+  /* Mobile-specific improvements */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Better mobile typography */
+  h1 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.125rem !important;
+    line-height: 1.5rem !important;
+  }
+
+  /* Mobile button improvements */
+  .btn-modern {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* Mobile input improvements */
+  .input-modern {
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Mobile card improvements */
+  .modern-card {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+
+  /* Mobile hero section */
+  .hero-gradient {
+    padding: 2rem 1rem !important;
+  }
+
+  .hero-gradient h1 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+
+  .hero-gradient p {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
 }
 
-/* Modern focus states */
+/* Mobile focus states */
 .focus-modern:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
   border-radius: 8px;
 }
 
-/* Modern loading states */
+/* Mobile loading states */
 .loading-modern {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite;
   border-radius: 8px;
+}
+
+/* Mobile-specific container adjustments */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  main {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
 } 
