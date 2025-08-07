@@ -46,6 +46,9 @@ export const DesignerProvider = ({ children }) => {
 
   // Load initial data from localStorage
   useEffect(() => {
+    // Clear old cache to force reload of new data
+    localStorage.removeItem('sunyaniDesigners');
+    
     const savedDesigners = localStorage.getItem('sunyaniDesigners');
     if (savedDesigners) {
       dispatch({ type: 'SET_DESIGNERS', payload: JSON.parse(savedDesigners) });
