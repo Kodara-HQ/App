@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Star, MapPin, Phone, Mail, Edit, Trash2, Calendar, Award } from 'lucide-react';
+import { ArrowLeft, Star, MapPin, Phone, Mail, Edit, Trash2, Calendar, Award, Clock } from 'lucide-react';
 import { useDesigners } from '../context/DesignerContext';
 
 const DesignerDetail = () => {
@@ -153,6 +153,19 @@ const DesignerDetail = () => {
                   <p className="text-sm text-gray-600">{designer.experience}</p>
                 </div>
               </div>
+
+              {designer.hours && (
+                <div className="flex items-center text-gray-700">
+                  <Clock className="h-5 w-5 mr-3 text-primary-600" />
+                  <div>
+                    <p className="font-medium">Working Hours</p>
+                    <p className="text-sm text-gray-600">{designer.hours}</p>
+                    {designer.workingHours && (
+                      <p className="text-xs text-gray-500">{designer.workingHours}</p>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Services */}

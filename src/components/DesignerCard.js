@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, MapPin, Phone, Mail, Scissors } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, Scissors, Clock } from 'lucide-react';
 
 const DesignerCard = ({ designer }) => {
   const renderStars = (rating) => {
@@ -64,10 +64,18 @@ const DesignerCard = ({ designer }) => {
         </div>
 
         {/* Location */}
-        <div className="flex items-center text-gray-600 mb-3">
+        <div className="flex items-center text-gray-600 mb-2">
           <MapPin className="h-4 w-4 mr-2" />
           <span className="text-sm">{designer.location}</span>
         </div>
+
+        {/* Working Hours */}
+        {designer.hours && (
+          <div className="flex items-center text-gray-600 mb-3">
+            <Clock className="h-4 w-4 mr-2" />
+            <span className="text-sm">{designer.hours}</span>
+          </div>
+        )}
 
         {/* Experience */}
         <div className="mb-4">

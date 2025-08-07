@@ -50,10 +50,40 @@ export const DesignerProvider = ({ children }) => {
     if (savedDesigners) {
       dispatch({ type: 'SET_DESIGNERS', payload: JSON.parse(savedDesigners) });
     } else {
-      // Load sample data
-      const sampleDesigners = [
+      // Load real Sunyani designers data
+      const sunyaniDesigners = [
         {
           id: 1,
+          name: "Jaka Designs",
+          specialty: "Bridal & Formal Wear",
+          location: "8MMC+F59, Sunyani",
+          phone: "+233 54 717 2208",
+          email: "jaka.designs@email.com",
+          experience: "10 years",
+          rating: 4.9,
+          description: "Specialized in creating stunning bridal gowns and formal evening wear. Expert in traditional and modern bridal designs with attention to detail and quality craftsmanship.",
+          services: ["Bridal Gowns", "Evening Dresses", "Formal Suits", "Traditional Wear"],
+          image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 5 pm",
+          workingHours: "8am-6pm (Mon-Fri)"
+        },
+        {
+          id: 2,
+          name: "byijay",
+          specialty: "Design & Fashion",
+          location: "Sunyani, Ghana",
+          phone: "+233 59 536 1788",
+          email: "byijay.designs@email.com",
+          experience: "8 years",
+          rating: 4.8,
+          description: "BRIDAL❕ENGAGEMENT❕OCCASION❕ - Creating beautiful designs for all special occasions. Specialized in bridal wear, engagement dresses, and occasion wear with modern African flair.",
+          services: ["Bridal Dresses", "Engagement Wear", "Occasion Dresses", "African Prints"],
+          image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 6 pm",
+          workingHours: "8am-6pm (Mon-Fri)"
+        },
+        {
+          id: 3,
           name: "Ama Osei",
           specialty: "Traditional African Wear",
           location: "Sunyani Central",
@@ -61,12 +91,14 @@ export const DesignerProvider = ({ children }) => {
           email: "ama.osei@email.com",
           experience: "8 years",
           rating: 4.8,
-          description: "Specializes in creating beautiful traditional African garments with modern twists.",
-          services: ["Wedding Dresses", "Traditional Wear", "Bridal Accessories"],
-          image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop"
+          description: "Specializes in creating beautiful traditional African garments with modern twists. Expert in kente, adinkra, and contemporary African fashion.",
+          services: ["Wedding Dresses", "Traditional Wear", "Bridal Accessories", "African Prints"],
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 6 pm",
+          workingHours: "8am-6pm (Mon-Sat)"
         },
         {
-          id: 2,
+          id: 4,
           name: "Kwame Mensah",
           specialty: "Contemporary Fashion",
           location: "Sunyani East",
@@ -74,12 +106,14 @@ export const DesignerProvider = ({ children }) => {
           email: "kwame.mensah@email.com",
           experience: "5 years",
           rating: 4.5,
-          description: "Modern fashion designer creating trendy contemporary pieces for young professionals.",
-          services: ["Casual Wear", "Business Attire", "Evening Dresses"],
-          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+          description: "Modern fashion designer creating trendy contemporary pieces for young professionals. Specialized in business attire and casual wear with a modern African touch.",
+          services: ["Casual Wear", "Business Attire", "Evening Dresses", "Modern Suits"],
+          image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 7 pm",
+          workingHours: "9am-7pm (Mon-Sat)"
         },
         {
-          id: 3,
+          id: 5,
           name: "Sarah Addo",
           specialty: "Bridal & Formal Wear",
           location: "Sunyani West",
@@ -87,12 +121,14 @@ export const DesignerProvider = ({ children }) => {
           email: "sarah.addo@email.com",
           experience: "12 years",
           rating: 4.9,
-          description: "Expert in creating stunning bridal gowns and formal evening wear.",
-          services: ["Bridal Gowns", "Evening Dresses", "Formal Suits"],
-          image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=400&fit=crop"
+          description: "Expert in creating stunning bridal gowns and formal evening wear. Known for elegant designs and exceptional attention to detail in every piece.",
+          services: ["Bridal Gowns", "Evening Dresses", "Formal Suits", "Accessories"],
+          image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 6 pm",
+          workingHours: "8am-6pm (Mon-Fri)"
         },
         {
-          id: 4,
+          id: 6,
           name: "Michael Kofi",
           specialty: "Men's Fashion",
           location: "Sunyani North",
@@ -100,12 +136,14 @@ export const DesignerProvider = ({ children }) => {
           email: "michael.kofi@email.com",
           experience: "6 years",
           rating: 4.6,
-          description: "Specialized in men's fashion including suits, traditional wear, and casual clothing.",
-          services: ["Men's Suits", "Traditional Wear", "Casual Clothing"],
-          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+          description: "Specialized in men's fashion including suits, traditional wear, and casual clothing. Creating sophisticated and stylish men's attire for all occasions.",
+          services: ["Men's Suits", "Traditional Wear", "Casual Clothing", "Formal Attire"],
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 6 pm",
+          workingHours: "8am-6pm (Mon-Sat)"
         },
         {
-          id: 5,
+          id: 7,
           name: "Grace Asante",
           specialty: "Children's Fashion",
           location: "Sunyani South",
@@ -113,12 +151,14 @@ export const DesignerProvider = ({ children }) => {
           email: "grace.asante@email.com",
           experience: "4 years",
           rating: 4.7,
-          description: "Creating adorable and comfortable clothing for children of all ages.",
-          services: ["Children's Clothing", "School Uniforms", "Party Dresses"],
-          image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=400&fit=crop"
+          description: "Creating adorable and comfortable clothing for children of all ages. Specialized in school uniforms, party dresses, and everyday children's wear.",
+          services: ["Children's Clothing", "School Uniforms", "Party Dresses", "Casual Wear"],
+          image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=400&h=400&fit=crop",
+          hours: "Open ⋅ Closes 5 pm",
+          workingHours: "8am-5pm (Mon-Fri)"
         }
       ];
-      dispatch({ type: 'SET_DESIGNERS', payload: sampleDesigners });
+      dispatch({ type: 'SET_DESIGNERS', payload: sunyaniDesigners });
     }
   }, []);
 
