@@ -43,28 +43,28 @@ const DesignerList = () => {
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <div className="pt-20 pb-16 px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-2xl">
+        <div className="pt-8 pb-12 px-4 sm:px-6 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-2xl">
             Sunyani Fashion Designers
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8 drop-shadow-lg">
+          <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto mb-8 drop-shadow-lg px-4">
             Discover talented fashion designers in Sunyani. Connect with local artisans and find the perfect designer for your style.
           </p>
-          <div className="flex items-center justify-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full text-lg font-medium inline-flex shadow-lg">
+          <div className="flex items-center justify-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full text-base sm:text-lg font-medium inline-flex shadow-lg">
             <Sparkles className="h-5 w-5" />
             <span>{designers.length} Amazing Designers Available</span>
           </div>
         </div>
 
         {/* Results Header */}
-        <div className="px-6 mb-8">
-          <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <div className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
+        <div className="px-4 sm:px-6 mb-6">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+            <div className="bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
               {filteredDesigners.length} Designer{filteredDesigners.length !== 1 ? 's' : ''} Found
             </div>
             <Link
               to="/add"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2 hover:shadow-lg transition-all duration-300 shadow-lg"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2 hover:shadow-lg transition-all duration-300 shadow-lg"
             >
               <Plus className="h-5 w-5" />
               <span>Add New Designer</span>
@@ -73,9 +73,9 @@ const DesignerList = () => {
         </div>
 
         {/* Designers Grid */}
-        <div className="px-6 pb-8">
+        <div className="px-4 sm:px-6 pb-8">
           {filteredDesigners.length === 0 ? (
-            <div className="text-center py-12">
+            <div className="text-center py-16">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
                 <div className="text-white/90 text-lg mb-2">
                   No designers found matching your criteria
@@ -86,7 +86,7 @@ const DesignerList = () => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto">
               {filteredDesigners.map(designer => (
                 <DesignerCard key={designer.id} designer={designer} />
               ))}
