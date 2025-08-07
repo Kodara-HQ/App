@@ -17,7 +17,8 @@ const AddDesigner = () => {
     description: '',
     services: [''],
     workingHours: '',
-    image: ''
+    image: '',
+    portfolio: []
   });
 
   const [errors, setErrors] = useState({});
@@ -71,6 +72,30 @@ const AddDesigner = () => {
         services: newServices
       }));
     }
+  };
+
+  const addPortfolioItem = () => {
+    setFormData(prev => ({
+      ...prev,
+      portfolio: [...prev.portfolio, { title: '', description: '', category: '', image: '' }]
+    }));
+  };
+
+  const removePortfolioItem = (index) => {
+    const newPortfolio = formData.portfolio.filter((_, i) => i !== index);
+    setFormData(prev => ({
+      ...prev,
+      portfolio: newPortfolio
+    }));
+  };
+
+  const handlePortfolioChange = (index, field, value) => {
+    const newPortfolio = [...formData.portfolio];
+    newPortfolio[index] = { ...newPortfolio[index], [field]: value };
+    setFormData(prev => ({
+      ...prev,
+      portfolio: newPortfolio
+    }));
   };
 
   const validateForm = () => {
@@ -355,6 +380,67 @@ const AddDesigner = () => {
               <p className="text-gray-500 text-sm mt-2">
                 Leave empty to use a default placeholder image
               </p>
+            </div>
+
+            {/* Portfolio Section */}
+            <div>
+              <label className="block text-lg font-semibold text-gray-800 mb-3">
+                Portfolio Works (Optional)
+              </label>
+              <div className="space-y-4">
+                {formData.portfolio.map((item, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <div className="flex justify-between items-center mb-3">
+                      <h4 className="font-semibold text-gray-700">Portfolio Item {index + 1}</h4>
+                      <button
+                        type="button"
+                        onClick={() => removePortfolioItem(index)}
+                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg text-sm transition-colors duration-300"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        value={item.title}
+                        onChange={(e) => handlePortfolioChange(index, 'title', e.target.value)}
+                        className="input-modern px-3 py-2 text-sm rounded-lg focus:outline-none focus-modern"
+                        placeholder="Work title"
+                      />
+                      <input
+                        type="text"
+                        value={item.category}
+                        onChange={(e) => handlePortfolioChange(index, 'category', e.target.value)}
+                        className="input-modern px-3 py-2 text-sm rounded-lg focus:outline-none focus-modern"
+                        placeholder="Category (e.g., Bridal, Traditional)"
+                      />
+                    </div>
+                    <textarea
+                      value={item.description}
+                      onChange={(e) => handlePortfolioChange(index, 'description', e.target.value)}
+                      className="input-modern w-full px-3 py-2 text-sm rounded-lg focus:outline-none focus-modern resize-none mt-3"
+                      rows="2"
+                      placeholder="Brief description of the work"
+                    />
+                    <input
+                      type="url"
+                      value={item.image}
+                      onChange={(e) => handlePortfolioChange(index, 'image', e.target.value)}
+                      className="input-modern w-full px-3 py-2 text-sm rounded-lg focus:outline-none focus-modern mt-3"
+                      placeholder="Image URL for this work"
+                    />
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={addPortfolioItem}
+                  className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-4 py-3 rounded-xl font-medium transition-colors duration-300 flex items-center space-x-2"
+                >
+                  <Plus className="h-4 w-4" />
+                  <span>Add Portfolio Item</span>
+                </button>
+              </div>
             </div>
 
             {/* Submit Button */}

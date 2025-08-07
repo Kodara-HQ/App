@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Star, MapPin, Phone, Mail, Clock, Edit, Trash2, ArrowLeft, Calendar, Award, Share2, Copy, Check } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, Clock, Edit, Trash2, ArrowLeft, Calendar, Award, Share2, Copy, Check, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useDesigners } from '../context/DesignerContext';
 
 const DesignerDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { designers, deleteDesigner } = useDesigners();
+  const [showModal, setShowModal] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const designer = designers.find(d => d.id === parseInt(id));
 
@@ -105,6 +107,35 @@ const DesignerDetail = () => {
       deleteDesigner(parseInt(id));
       navigate('/');
     }
+  };
+
+  const openModal = (index) => {
+    console.log('Opening modal for index:', index);
+    console.log('Portfolio:', designer.portfolio);
+    setCurrentImageIndex(index);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev === designer.portfolio.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? designer.portfolio.length - 1 : prev - 1
+    );
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
   };
 
   if (!designer) {
@@ -216,13 +247,67 @@ const DesignerDetail = () => {
                   {designer.services.map((service, index) => (
                     <div
                       key={index}
-                      className="bg-purple-50 border border-purple-200 rounded-xl px-4 py-3 flex items-center space-x-3"
+                      className="bg-teal-50 border border-teal-200 rounded-xl px-4 py-3 flex items-center space-x-3"
                     >
-                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
                       <span className="text-gray-700 font-medium">{service}</span>
                     </div>
                   ))}
                 </div>
+              </div>
+
+              {/* Portfolio/Works */}
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Portfolio & Works</h3>
+                {designer.portfolio && designer.portfolio.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {designer.portfolio.map((work, index) => (
+                      <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-purple-300">
+                        <div className="aspect-square overflow-hidden">
+                          <img
+                            src={work.image}
+                            alt={work.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 cursor-pointer"
+                            onClick={() => openModal(index)}
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=Fashion+Work';
+                            }}
+                          />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <h4 className="font-bold text-lg mb-1">{work.title}</h4>
+                          <p className="text-sm opacity-90">{work.description}</p>
+                          {work.category && (
+                            <span className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium mt-2">
+                              {work.category}
+                            </span>
+                          )}
+                        </div>
+                        {/* Click indicator */}
+                        <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                        </div>
+                        {/* Click hint */}
+                        <div className="absolute top-2 left-2 bg-purple-500 text-white px-2 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          Click to view
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12 bg-gray-50 rounded-xl">
+                    <div className="text-gray-400 mb-4">
+                      <svg className="h-16 w-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h4 className="text-lg font-semibold text-gray-600 mb-2">No Portfolio Available</h4>
+                    <p className="text-gray-500">This designer hasn't uploaded their portfolio yet.</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -260,8 +345,8 @@ const DesignerDetail = () => {
               </div>
 
               {designer.workingHours && (
-                <div className="flex items-center space-x-3 p-3 bg-purple-50 rounded-xl">
-                  <Clock className="h-5 w-5 text-purple-500" />
+                <div className="flex items-center space-x-3 p-3 bg-teal-50 rounded-xl">
+                  <Clock className="h-5 w-5 text-teal-500" />
                   <div>
                     <p className="text-sm text-gray-600">Working Hours</p>
                     <p className="font-medium text-gray-800">{designer.workingHours}</p>
@@ -276,17 +361,17 @@ const DesignerDetail = () => {
             <h3 className="text-xl font-bold text-gray-800 mb-6">Quick Actions</h3>
             
             <div className="space-y-3">
-              <button onClick={handleCallNow} className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+              <button onClick={handleCallNow} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                 <Phone className="h-4 w-4 inline mr-2" />
                 Call Now
               </button>
               
-              <button onClick={handleSendEmail} className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+              <button onClick={handleSendEmail} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                 <Mail className="h-4 w-4 inline mr-2" />
                 Send Email
               </button>
               
-              <button onClick={handleBookAppointment} className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+              <button onClick={handleBookAppointment} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                 <Calendar className="h-4 w-4 inline mr-2" />
                 Book Appointment
               </button>
@@ -318,6 +403,52 @@ const DesignerDetail = () => {
           </div>
         </div>
       </div>
+
+      {showModal && designer.portfolio && designer.portfolio.length > 0 && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+          onClick={closeModal}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          <div
+            className="relative w-full max-w-4xl max-h-full"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+          >
+            <button
+              className="absolute top-4 right-4 text-white hover:text-gray-300"
+              onClick={closeModal}
+              onKeyDown={handleKeyDown}
+              tabIndex={0}
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <button
+              className="absolute top-1/2 left-4 -translate-y-1/2 text-white hover:text-gray-300"
+              onClick={prevImage}
+              onKeyDown={handleKeyDown}
+              tabIndex={0}
+            >
+              <ChevronLeft className="h-10 w-10" />
+            </button>
+            <button
+              className="absolute top-1/2 right-4 -translate-y-1/2 text-white hover:text-gray-300"
+              onClick={nextImage}
+              onKeyDown={handleKeyDown}
+              tabIndex={0}
+            >
+              <ChevronRight className="h-10 w-10" />
+            </button>
+            <img
+              src={designer.portfolio[currentImageIndex].image}
+              alt={designer.portfolio[currentImageIndex].title}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
