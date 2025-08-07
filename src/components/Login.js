@@ -193,18 +193,6 @@ const Login = () => {
             <span>Create Account</span>
           </Link>
         </div>
-
-        {/* Demo Account Info */}
-        <div className="modern-card p-6 text-center">
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">Demo Account</h3>
-          <p className="text-gray-600 text-sm mb-3">
-            For testing purposes, you can use this demo account:
-          </p>
-          <div className="bg-gray-50 rounded-lg p-3 text-sm">
-            <p className="text-gray-700"><strong>Email:</strong> demo@sunyani.com</p>
-            <p className="text-gray-700"><strong>Password:</strong> demo123</p>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -102,7 +102,7 @@ const ForgotPassword = () => {
                   setIsSubmitted(false);
                   setEmail('');
                 }}
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
               >
                 Try Another Email
               </button>
@@ -110,7 +110,7 @@ const ForgotPassword = () => {
                 to="/login"
                 className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 inline-block"
               >
-                <ArrowLeft className="h-4 w-4 inline mr-2" />
+                <ArrowLeft className="h-5 w-5 inline mr-2" />
                 Back to Sign In
               </Link>
             </div>
@@ -124,10 +124,10 @@ const ForgotPassword = () => {
             </p>
             <div className="space-y-2 text-sm">
               <p className="text-gray-700">
-                <strong>Email:</strong> support@sunyani.com
+                <strong>Email:</strong> mycodedspace@gmail.com
               </p>
               <p className="text-gray-700">
-                <strong>Phone:</strong> +233 24 123 4567
+                <strong>Phone:</strong> +233 24 882 1389
               </p>
             </div>
           </div>
