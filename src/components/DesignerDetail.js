@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Star, MapPin, Phone, Mail, Clock, Edit, Trash2, ArrowLeft, Calendar, Award } from 'lucide-react';
+import { Star, MapPin, Phone, Mail, Clock, Edit, Trash2, ArrowLeft, Calendar, Award, Share2, Copy, Check } from 'lucide-react';
 import { useDesigners } from '../context/DesignerContext';
 
 const DesignerDetail = () => {
@@ -9,6 +9,69 @@ const DesignerDetail = () => {
   const { designers, deleteDesigner } = useDesigners();
   
   const designer = designers.find(d => d.id === parseInt(id));
+
+  // Quick Actions Handlers
+  const handleCallNow = () => {
+    if (designer.phone) {
+      // Remove any non-numeric characters and add country code if needed
+      const cleanPhone = designer.phone.replace(/\D/g, '');
+      const phoneNumber = cleanPhone.startsWith('233') ? cleanPhone : `233${cleanPhone}`;
+      window.open(`tel:+${phoneNumber}`, '_self');
+    }
+  };
+
+  const handleSendEmail = () => {
+    if (designer.email) {
+      const subject = encodeURIComponent(`Inquiry about ${designer.name} - Sunyani Fashion Directory`);
+      const body = encodeURIComponent(`Hello ${designer.name},\n\nI'm interested in your fashion design services. Could you please provide more information about your services and availability?\n\nThank you!`);
+      window.open(`mailto:${designer.email}?subject=${subject}&body=${body}`, '_self');
+    }
+  };
+
+  const handleBookAppointment = () => {
+    if (designer.phone) {
+      const message = encodeURIComponent(`Hello ${designer.name}, I would like to book an appointment. Please let me know your available times.`);
+      const cleanPhone = designer.phone.replace(/\D/g, '');
+      const phoneNumber = cleanPhone.startsWith('233') ? cleanPhone : `233${cleanPhone}`;
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    }
+  };
+
+  // Share Handlers
+  const handleShareFacebook = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Check out ${designer.name} - Amazing fashion designer in Sunyani!`);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank');
+  };
+
+  const handleShareTwitter = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Check out ${designer.name} - Amazing fashion designer in Sunyani!`);
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+  };
+
+  const handleShareWhatsApp = () => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(`Check out ${designer.name} - Amazing fashion designer in Sunyani! ${url}`);
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      // Show success feedback (you could add a toast notification here)
+      alert('Link copied to clipboard!');
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = window.location.href;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      alert('Link copied to clipboard!');
+    }
+  };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -213,17 +276,17 @@ const DesignerDetail = () => {
             <h3 className="text-xl font-bold text-gray-800 mb-6">Quick Actions</h3>
             
             <div className="space-y-3">
-              <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
+              <button onClick={handleCallNow} className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                 <Phone className="h-4 w-4 inline mr-2" />
                 Call Now
               </button>
               
-              <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
+              <button onClick={handleSendEmail} className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                 <Mail className="h-4 w-4 inline mr-2" />
                 Send Email
               </button>
               
-              <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105">
+              <button onClick={handleBookAppointment} className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                 <Calendar className="h-4 w-4 inline mr-2" />
                 Book Appointment
               </button>
@@ -235,16 +298,20 @@ const DesignerDetail = () => {
             <h3 className="text-xl font-bold text-gray-800 mb-6">Share Designer</h3>
             
             <div className="grid grid-cols-2 gap-3">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors duration-300">
+              <button onClick={handleShareFacebook} className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
+                <Share2 className="h-4 w-4" />
                 Facebook
               </button>
-              <button className="bg-blue-400 hover:bg-blue-500 text-white py-2 rounded-lg font-medium transition-colors duration-300">
+              <button onClick={handleShareTwitter} className="bg-blue-400 hover:bg-blue-500 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
+                <Share2 className="h-4 w-4" />
                 Twitter
               </button>
-              <button className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition-colors duration-300">
+              <button onClick={handleShareWhatsApp} className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
+                <Share2 className="h-4 w-4" />
                 WhatsApp
               </button>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition-colors duration-300">
+              <button onClick={handleCopyLink} className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
+                <Copy className="h-4 w-4" />
                 Copy Link
               </button>
             </div>
