@@ -53,7 +53,7 @@ export const DesignerProvider = ({ children }) => {
     if (savedDesigners) {
       dispatch({ type: 'SET_DESIGNERS', payload: JSON.parse(savedDesigners) });
     } else {
-      // Load real Sunyani designers data with provided images
+      // Load real Sunyani designers data with actual image filenames
       const sunyaniDesigners = [
         {
           id: 1,
@@ -66,7 +66,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.9,
           description: "Specialized in creating stunning bridal gowns and formal evening wear. Expert in traditional and modern bridal designs with attention to detail and quality craftsmanship.",
           services: ["Bridal Gowns", "Evening Dresses", "Formal Suits", "Traditional Wear"],
-          image: "/images/jaka-designs.jpg", // Image 2 - African print shirt
+          image: "/images/print shirt.jpg", // African print shirt
           hours: "Open ⋅ Closes 5 pm",
           workingHours: "8am-6pm (Mon-Fri)"
         },
@@ -81,7 +81,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.8,
           description: "BRIDAL❕ENGAGEMENT❕OCCASION❕ - Creating beautiful designs for all special occasions. Specialized in bridal wear, engagement dresses, and occasion wear with modern African flair.",
           services: ["Bridal Dresses", "Engagement Wear", "Occasion Dresses", "African Prints"],
-          image: "/images/byijay.jpg", // Image 1 - Elegant woman in white gown
+          image: "/images/bijay.jpg", // Elegant woman in white gown
           hours: "Open ⋅ Closes 6 pm",
           workingHours: "8am-6pm (Mon-Fri)"
         },
@@ -96,7 +96,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.8,
           description: "Specializes in creating beautiful traditional African garments with modern twists. Expert in kente, adinkra, and contemporary African fashion.",
           services: ["Wedding Dresses", "Traditional Wear", "Bridal Accessories", "African Prints"],
-          image: "/images/ama-osei.jpg", // Image 3 - Woman in colorful dress
+          image: "/images/Lady print.jpg", // Woman in colorful dress
           hours: "Open ⋅ Closes 6 pm",
           workingHours: "8am-6pm (Mon-Sat)"
         },
@@ -111,7 +111,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.5,
           description: "Modern fashion designer creating trendy contemporary pieces for young professionals. Specialized in business attire and casual wear with a modern African touch.",
           services: ["Casual Wear", "Business Attire", "Evening Dresses", "Modern Suits"],
-          image: "/images/kwame-mensah.jpg", // Image 4 - Burgundy dress with white accents
+          image: "/images/african print.jpg", // African print design
           hours: "Open ⋅ Closes 7 pm",
           workingHours: "9am-7pm (Mon-Sat)"
         },
@@ -126,7 +126,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.9,
           description: "Expert in creating stunning bridal gowns and formal evening wear. Known for elegant designs and exceptional attention to detail in every piece.",
           services: ["Bridal Gowns", "Evening Dresses", "Formal Suits", "Accessories"],
-          image: "/images/sarah-addo.jpg", // Image 5 - Varsity jacket
+          image: "/images/lady.webp", // Lady in fashion
           hours: "Open ⋅ Closes 6 pm",
           workingHours: "8am-6pm (Mon-Fri)"
         },
@@ -141,7 +141,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.6,
           description: "Specialized in men's fashion including suits, traditional wear, and casual clothing. Creating sophisticated and stylish men's attire for all occasions.",
           services: ["Men's Suits", "Traditional Wear", "Casual Clothing", "Formal Attire"],
-          image: "/images/michael-kofi.jpg", // Image 6 - Navy polo with African print
+          image: "/images/shirt.webp", // Men's shirt
           hours: "Open ⋅ Closes 6 pm",
           workingHours: "8am-6pm (Mon-Sat)"
         },
@@ -156,7 +156,7 @@ export const DesignerProvider = ({ children }) => {
           rating: 4.7,
           description: "Creating adorable and comfortable clothing for children of all ages. Specialized in school uniforms, party dresses, and everyday children's wear.",
           services: ["Children's Clothing", "School Uniforms", "Party Dresses", "Casual Wear"],
-          image: "/images/grace-asante.jpg", // Image 7 - Man in dark blue suit
+          image: "/images/suit.jpg", // Fashion suit
           hours: "Open ⋅ Closes 5 pm",
           workingHours: "8am-5pm (Mon-Fri)"
         }
