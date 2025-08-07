@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Save, Plus, Star, MapPin, Phone, Mail, Clock, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ArrowLeft, Save, Plus, Star, MapPin, Phone, Mail, Clock, Award, Edit } from 'lucide-react';
 import { useDesigners } from '../context/DesignerContext';
 
-const AddDesigner = () => {
+const EditDesigner = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const { addDesigner } = useDesigners();
+  const { designers, updateDesigner } = useDesigners();
+  
+  const designer = designers.find(d => d.id === parseInt(id));
   
   const [formData, setFormData] = useState({
     name: '',
@@ -30,6 +33,24 @@ const AddDesigner = () => {
     "Children's Fashion",
     'Design & Fashion'
   ];
+
+  // Load designer data when component mounts
+  useEffect(() => {
+    if (designer) {
+      setFormData({
+        name: designer.name || '',
+        specialty: designer.specialty || '',
+        location: designer.location || '',
+        phone: designer.phone || '',
+        email: designer.email || '',
+        experience: designer.experience || '',
+        description: designer.description || '',
+        services: designer.services && designer.services.length > 0 ? designer.services : [''],
+        workingHours: designer.workingHours || '',
+        image: designer.image || ''
+      });
+    }
+  }, [designer]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -105,28 +126,51 @@ const AddDesigner = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      const designerData = {
+      const updatedDesigner = {
+        ...designer,
         ...formData,
         services: formData.services.filter(service => service.trim()),
-        rating: 0,
         image: formData.image || 'https://via.placeholder.com/400x300/f3f4f6/9ca3af?text=Fashion+Designer'
       };
       
-      addDesigner(designerData);
-      navigate('/');
+      updateDesigner(updatedDesigner);
+      navigate(`/designer/${designer.id}`);
     }
   };
+
+  if (!designer) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center modern-card p-12">
+          <div className="text-gray-400 mb-6">
+            <Edit className="h-24 w-24 mx-auto animate-pulse-slow" />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-700 mb-4">Designer Not Found</h2>
+          <p className="text-gray-500 mb-8 text-lg">
+            The designer you're trying to edit doesn't exist or has been removed.
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            className="btn-modern text-white px-8 py-3 rounded-xl font-medium inline-block transition-all duration-300 transform hover:scale-105"
+          >
+            <ArrowLeft className="h-5 w-5 inline mr-2" />
+            Back to Designers
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 animate-fade-in-up">
       {/* Header */}
       <div className="mb-8">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(`/designer/${designer.id}`)}
           className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors duration-300 font-medium"
         >
           <ArrowLeft className="h-5 w-5" />
-          <span>Back to Designers</span>
+          <span>Back to Designer Details</span>
         </button>
       </div>
 
@@ -134,9 +178,9 @@ const AddDesigner = () => {
         {/* Hero Section */}
         <div className="hero-gradient text-center py-12 px-6 rounded-3xl text-white mb-8">
           <div className="relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Add New Designer</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Edit Designer</h1>
             <p className="text-xl opacity-90 max-w-2xl mx-auto">
-              Help grow the Sunyani fashion community by adding a talented designer to our directory.
+              Update the information for {designer.name} in our fashion directory.
             </p>
           </div>
         </div>
@@ -361,7 +405,7 @@ const AddDesigner = () => {
             <div className="flex justify-end space-x-4 pt-6">
               <button
                 type="button"
-                onClick={() => navigate('/')}
+                onClick={() => navigate(`/designer/${designer.id}`)}
                 className="bg-gray-500 hover:bg-gray-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
               >
                 Cancel
@@ -371,7 +415,7 @@ const AddDesigner = () => {
                 className="btn-modern text-white px-8 py-4 rounded-xl font-medium flex items-center space-x-2 transition-all duration-300 transform hover:scale-105"
               >
                 <Save className="h-5 w-5" />
-                <span>Add Designer</span>
+                <span>Update Designer</span>
               </button>
             </div>
           </form>
@@ -381,4 +425,4 @@ const AddDesigner = () => {
   );
 };
 
-export default AddDesigner; 
+export default EditDesigner; 
