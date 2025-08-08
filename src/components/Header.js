@@ -59,23 +59,23 @@ const Header = () => {
           <div className="flex items-center space-x-2 flex-1 max-w-xs sm:max-w-md mx-2">
             {/* Search Bar */}
             <div className="relative flex-1">
-              <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
+              <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder="Search designers..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-6 pr-2 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-8 pr-3 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm"
               />
             </div>
 
             {/* Filter Dropdown */}
             <div className="relative">
-              <Filter className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
+              <Filter className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <select
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
-                className="pl-6 pr-4 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none min-w-[80px] sm:min-w-[100px]"
+                className="pl-8 pr-6 py-2 bg-white border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none min-w-[100px] sm:min-w-[120px] shadow-sm"
               >
                 {specialties.map(specialty => (
                   <option key={specialty} value={specialty}>
@@ -83,8 +83,8 @@ const Header = () => {
                   </option>
                 ))}
               </select>
-              <div className="absolute right-1 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg className="h-2 w-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                <svg className="h-3 w-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>

@@ -21,7 +21,7 @@ function App() {
         <Router>
           <div className="App relative min-h-screen">
             {/* Background Image */}
-            <div className="absolute inset-0">
+            <div className="fixed inset-0 -z-10">
               <img 
                 src="/images/dashboard.jpg" 
                 alt="Fashion Designer Dashboard" 
@@ -32,7 +32,7 @@ function App() {
             </div>
             
             {/* Content */}
-            <div className="relative z-10">
+            <div className="relative z-10 min-h-screen">
               <Header />
               <main>
                 <Routes>
