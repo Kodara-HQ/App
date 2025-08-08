@@ -55,11 +55,53 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Center - Empty space for balance */}
-          <div className="flex-1"></div>
+          {/* Center - Search and Filter */}
+          <div className="flex items-center space-x-2 flex-1 max-w-xs sm:max-w-md mx-2">
+            {/* Search Bar */}
+            <div className="relative flex-1">
+              <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-6 pr-2 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              />
+            </div>
 
-          {/* Right Side - User Profile and Menu */}
+            {/* Filter Dropdown */}
+            <div className="relative">
+              <Filter className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
+              <select
+                value={selectedSpecialty}
+                onChange={(e) => setSelectedSpecialty(e.target.value)}
+                className="pl-6 pr-4 py-1 bg-gray-50 border border-gray-200 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none min-w-[80px] sm:min-w-[100px]"
+              >
+                {specialties.map(specialty => (
+                  <option key={specialty} value={specialty}>
+                    {specialty}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-1 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                <svg className="h-2 w-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Add Button, User Profile and Menu */}
           <div className="flex items-center space-x-2">
+            {/* Add New Designer Button */}
+            <Link
+              to="/add"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 py-1 rounded-md text-xs font-medium flex items-center space-x-1 hover:shadow-md transition-all duration-200"
+            >
+              <Plus className="w-3 h-3" />
+              <span className="hidden sm:inline">Add</span>
+            </Link>
+
             {/* User Profile */}
             {user && (
               <div className="relative">
