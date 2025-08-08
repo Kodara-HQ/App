@@ -162,9 +162,9 @@ const DesignerDetail = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 animate-fade-in-up">
+    <div className="container mx-auto px-4 py-4 sm:py-8 animate-fade-in-up">
       {/* Back Button */}
-      <div className="mb-8">
+      <div className="mb-4 sm:mb-8">
         <button
           onClick={() => navigate('/')}
           className="flex items-center space-x-2 text-gray-600 hover:text-purple-600 transition-colors duration-300 font-medium"
@@ -174,12 +174,12 @@ const DesignerDetail = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
         {/* Main Content */}
-        <div className="lg:col-span-2 space-y-8">
+        <div className="lg:col-span-2 space-y-4 sm:space-y-8">
           {/* Hero Section */}
           <div className="modern-card overflow-hidden">
-            <div className="relative h-96">
+            <div className="relative h-48 sm:h-96">
               <img
                 src={designer.image}
                 alt={designer.name}
@@ -191,76 +191,76 @@ const DesignerDetail = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
               {/* Floating badges */}
-              <div className="absolute top-6 left-6 flex flex-col space-y-3">
-                <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+              <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex flex-col space-y-2 sm:space-y-3">
+                <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
                   {designer.experience} Experience
                 </div>
-                <div className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2">
-                  <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                  <span className="font-bold text-gray-800">{designer.rating}</span>
+                <div className="bg-white/90 backdrop-blur-sm rounded-full px-2 sm:px-4 py-1 sm:py-2 flex items-center space-x-2">
+                  <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+                  <span className="font-bold text-gray-800 text-xs sm:text-sm">{designer.rating}</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-8">
-              <div className="flex items-start justify-between mb-6">
+            <div className="p-4 sm:p-8">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6 space-y-4 sm:space-y-0">
                 <div>
-                  <h1 className="text-4xl font-bold text-gray-800 mb-2">{designer.name}</h1>
-                  <p className="text-2xl text-purple-600 font-semibold">{designer.specialty}</p>
+                  <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-2">{designer.name}</h1>
+                  <p className="text-lg sm:text-2xl text-purple-600 font-semibold">{designer.specialty}</p>
                 </div>
                 
                 {/* Action Buttons */}
-                <div className="flex space-x-3">
+                <div className="flex space-x-2 sm:space-x-3">
                   <Link
                     to={`/edit/${designer.id}`}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 text-sm sm:text-base"
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>Edit</span>
                   </Link>
                   <button
                     onClick={handleDelete}
-                    className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
+                    className="bg-red-500 hover:bg-red-600 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 text-sm sm:text-base"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
                     <span>Delete</span>
                   </button>
                 </div>
               </div>
 
               {/* Rating */}
-              <div className="flex items-center space-x-2 mb-6">
+              <div className="flex items-center space-x-2 mb-4 sm:mb-6">
                 {renderStars(designer.rating)}
-                <span className="text-lg text-gray-600">({designer.rating} rating)</span>
+                <span className="text-sm sm:text-lg text-gray-600">({designer.rating} rating)</span>
               </div>
 
               {/* Description */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">About</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">{designer.description}</p>
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">About</h3>
+                <p className="text-gray-600 text-base sm:text-lg leading-relaxed">{designer.description}</p>
               </div>
 
               {/* Services */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">Services Offered</h3>
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Services Offered</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {designer.services.map((service, index) => (
                     <div
                       key={index}
-                      className="bg-teal-50 border border-teal-200 rounded-xl px-4 py-3 flex items-center space-x-3"
+                      className="bg-teal-50 border border-teal-200 rounded-xl px-3 sm:px-4 py-2 sm:py-3 flex items-center space-x-3"
                     >
                       <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                      <span className="text-gray-700 font-medium">{service}</span>
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">{service}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Portfolio/Works */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Portfolio & Works</h3>
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6">Portfolio & Works</h3>
                 {designer.portfolio && designer.portfolio.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {designer.portfolio.map((work, index) => (
                       <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer border-2 border-transparent hover:border-purple-300">
                         <div className="aspect-square overflow-hidden">
@@ -275,18 +275,18 @@ const DesignerDetail = () => {
                           />
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                          <h4 className="font-bold text-lg mb-1">{work.title}</h4>
-                          <p className="text-sm opacity-90">{work.description}</p>
+                        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                          <h4 className="font-bold text-base sm:text-lg mb-1">{work.title}</h4>
+                          <p className="text-xs sm:text-sm opacity-90">{work.description}</p>
                           {work.category && (
-                            <span className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium mt-2">
+                            <span className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 text-xs font-medium mt-2">
                               {work.category}
                             </span>
                           )}
                         </div>
                         {/* Click indicator */}
                         <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                           </svg>
                         </div>
@@ -298,14 +298,14 @@ const DesignerDetail = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-12 bg-gray-50 rounded-xl">
+                  <div className="text-center py-8 sm:py-12 bg-gray-50 rounded-xl">
                     <div className="text-gray-400 mb-4">
-                      <svg className="h-16 w-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-12 w-12 sm:h-16 sm:w-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <h4 className="text-lg font-semibold text-gray-600 mb-2">No Portfolio Available</h4>
-                    <p className="text-gray-500">This designer hasn't uploaded their portfolio yet.</p>
+                    <h4 className="text-base sm:text-lg font-semibold text-gray-600 mb-2">No Portfolio Available</h4>
+                    <p className="text-gray-500 text-sm sm:text-base">This designer hasn't uploaded their portfolio yet.</p>
                   </div>
                 )}
               </div>
@@ -314,42 +314,42 @@ const DesignerDetail = () => {
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Contact Information */}
-          <div className="modern-card p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
+          <div className="modern-card p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6">Contact Information</h3>
             
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-xl">
-                <Phone className="h-5 w-5 text-blue-500" />
-                <div>
-                  <p className="text-sm text-gray-600">Phone</p>
-                  <p className="font-medium text-gray-800">{designer.phone}</p>
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm text-gray-600">Phone</p>
+                  <p className="font-medium text-gray-800 text-sm sm:text-base truncate">{designer.phone}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3 p-3 bg-red-50 rounded-xl">
-                <Mail className="h-5 w-5 text-red-500" />
-                <div>
-                  <p className="text-sm text-gray-600">Email</p>
-                  <p className="font-medium text-gray-800">{designer.email}</p>
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-red-500 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm text-gray-600">Email</p>
+                  <p className="font-medium text-gray-800 text-sm sm:text-base truncate">{designer.email}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-xl">
-                <MapPin className="h-5 w-5 text-green-500" />
-                <div>
-                  <p className="text-sm text-gray-600">Location</p>
-                  <p className="font-medium text-gray-800">{designer.location}</p>
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 flex-shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm text-gray-600">Location</p>
+                  <p className="font-medium text-gray-800 text-sm sm:text-base truncate">{designer.location}</p>
                 </div>
               </div>
 
               {designer.workingHours && (
                 <div className="flex items-center space-x-3 p-3 bg-teal-50 rounded-xl">
-                  <Clock className="h-5 w-5 text-teal-500" />
-                  <div>
-                    <p className="text-sm text-gray-600">Working Hours</p>
-                    <p className="font-medium text-gray-800">{designer.workingHours}</p>
+                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-teal-500 flex-shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm text-gray-600">Working Hours</p>
+                    <p className="font-medium text-gray-800 text-sm sm:text-base truncate">{designer.workingHours}</p>
                   </div>
                 </div>
               )}
@@ -357,47 +357,51 @@ const DesignerDetail = () => {
           </div>
 
           {/* Quick Actions */}
-          <div className="modern-card p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-6">Quick Actions</h3>
+          <div className="modern-card p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6">Quick Actions</h3>
             
-            <div className="space-y-3">
-              <button onClick={handleCallNow} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
-                <Phone className="h-4 w-4 inline mr-2" />
+            <div className="space-y-2 sm:space-y-3">
+              <button onClick={handleCallNow} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 text-sm sm:text-base">
+                <Phone className="h-3 w-3 sm:h-4 sm:w-4 inline mr-2" />
                 Call Now
               </button>
               
-              <button onClick={handleSendEmail} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
-                <Mail className="h-4 w-4 inline mr-2" />
+              <button onClick={handleSendEmail} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 text-sm sm:text-base">
+                <Mail className="h-3 w-3 sm:h-4 sm:w-4 inline mr-2" />
                 Send Email
               </button>
               
-              <button onClick={handleBookAppointment} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
-                <Calendar className="h-4 w-4 inline mr-2" />
+              <button onClick={handleBookAppointment} className="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-white py-2 sm:py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 text-sm sm:text-base">
+                <Calendar className="h-3 w-3 sm:h-4 sm:w-4 inline mr-2" />
                 Book Appointment
               </button>
             </div>
           </div>
 
           {/* Share */}
-          <div className="modern-card p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-6">Share Designer</h3>
+          <div className="modern-card p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6">Share Designer</h3>
             
-            <div className="grid grid-cols-2 gap-3">
-              <button onClick={handleShareFacebook} className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
-                <Share2 className="h-4 w-4" />
-                Facebook
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+              <button onClick={handleShareFacebook} className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2 text-xs sm:text-sm">
+                <Share2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">Facebook</span>
+                <span className="sm:hidden">FB</span>
               </button>
-              <button onClick={handleShareTwitter} className="bg-blue-400 hover:bg-blue-500 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
-                <Share2 className="h-4 w-4" />
-                Twitter
+              <button onClick={handleShareTwitter} className="bg-blue-400 hover:bg-blue-500 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2 text-xs sm:text-sm">
+                <Share2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">Twitter</span>
+                <span className="sm:hidden">TW</span>
               </button>
-              <button onClick={handleShareWhatsApp} className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
-                <Share2 className="h-4 w-4" />
-                WhatsApp
+              <button onClick={handleShareWhatsApp} className="bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2 text-xs sm:text-sm">
+                <Share2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">WhatsApp</span>
+                <span className="sm:hidden">WA</span>
               </button>
-              <button onClick={handleCopyLink} className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2">
-                <Copy className="h-4 w-4" />
-                Copy Link
+              <button onClick={handleCopyLink} className="bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-medium transition-colors duration-300 flex items-center space-x-2 text-xs sm:text-sm">
+                <Copy className="h-3 w-3 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">Copy Link</span>
+                <span className="sm:hidden">Copy</span>
               </button>
             </div>
           </div>
@@ -406,7 +410,7 @@ const DesignerDetail = () => {
 
       {showModal && designer.portfolio && designer.portfolio.length > 0 && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
           onClick={closeModal}
           onKeyDown={handleKeyDown}
           tabIndex={0}
@@ -418,33 +422,33 @@ const DesignerDetail = () => {
             tabIndex={0}
           >
             <button
-              className="absolute top-4 right-4 text-white hover:text-gray-300"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 z-10 bg-black/50 rounded-full p-2"
               onClick={closeModal}
               onKeyDown={handleKeyDown}
               tabIndex={0}
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
             <button
-              className="absolute top-1/2 left-4 -translate-y-1/2 text-white hover:text-gray-300"
+              className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 text-white hover:text-gray-300 z-10 bg-black/50 rounded-full p-2"
               onClick={prevImage}
               onKeyDown={handleKeyDown}
               tabIndex={0}
             >
-              <ChevronLeft className="h-10 w-10" />
+              <ChevronLeft className="h-6 w-6 sm:h-10 sm:w-10" />
             </button>
             <button
-              className="absolute top-1/2 right-4 -translate-y-1/2 text-white hover:text-gray-300"
+              className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 text-white hover:text-gray-300 z-10 bg-black/50 rounded-full p-2"
               onClick={nextImage}
               onKeyDown={handleKeyDown}
               tabIndex={0}
             >
-              <ChevronRight className="h-10 w-10" />
+              <ChevronRight className="h-6 w-6 sm:h-10 sm:w-10" />
             </button>
             <img
               src={designer.portfolio[currentImageIndex].image}
               alt={designer.portfolio[currentImageIndex].title}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain rounded-lg"
             />
           </div>
         </div>

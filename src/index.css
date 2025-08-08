@@ -324,6 +324,28 @@ html {
   .hero-gradient p {
     font-size: 1rem;
   }
+
+  /* Mobile-specific improvements */
+  .grid {
+    gap: 1rem;
+  }
+
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile */
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+
+  /* Improve modal on mobile */
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
 }
 
 @media (max-width: 640px) {
@@ -371,5 +393,50 @@ html {
   
   .hero-gradient p {
     font-size: 0.875rem;
+  }
+
+  /* Extra small screen improvements */
+  .grid {
+    gap: 0.75rem;
+  }
+
+  /* Smaller text for very small screens */
+  .text-sm {
+    font-size: 0.75rem;
+  }
+
+  /* Compact spacing */
+  .space-y-2 > * + * {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Improve mobile navigation */
+@media (max-width: 768px) {
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .mobile-menu-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
   }
 } 

@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { User, ChevronDown, Menu } from 'lucide-react';
+import { User, ChevronDown, Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useDesigners } from '../context/DesignerContext';
 
 const Header = () => {
   const { user, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
     navigate('/login');
     setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
   };
 
   // Get user's display name
@@ -44,7 +46,7 @@ const Header = () => {
             <span className="text-xl font-bold text-gray-900">Sunyani Fashion</span>
           </Link>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <Link to="/" className="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
               Designers
@@ -56,8 +58,8 @@ const Header = () => {
             )}
           </nav>
 
-          {/* User Menu */}
-          <div className="flex items-center space-x-4">
+          {/* Desktop User Menu */}
+          <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <div className="relative">
                 <button
@@ -97,7 +99,79 @@ const Header = () => {
               </div>
             )}
           </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gray-700 hover:text-purple-600 p-2 rounded-md"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+              <Link
+                to="/"
+                className="block text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Designers
+              </Link>
+              {user && (
+                <Link
+                  to="/add"
+                  className="block text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Add Designer
+                </Link>
+              )}
+              
+              {/* Mobile User Menu */}
+              <div className="pt-4 border-t border-gray-200">
+                {user ? (
+                  <div className="space-y-2">
+                    <div className="px-3 py-2 text-sm text-gray-500">
+                      Welcome, {getUserDisplayName()}
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="block w-full text-left text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    <Link
+                      to="/login"
+                      className="block text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-base font-medium transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      to="/register"
+                      className="block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-2 rounded-md text-base font-medium hover:shadow-lg transition-all duration-300"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

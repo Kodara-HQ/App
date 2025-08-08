@@ -92,9 +92,9 @@ const DesignerCard = ({ designer }) => {
         </div>
 
         {/* Bottom Section - Details */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {/* Designer Name */}
-          <h3 className="text-xl font-bold text-gray-900 mb-2">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
             {designer.name}
           </h3>
 
@@ -115,26 +115,26 @@ const DesignerCard = ({ designer }) => {
           <div className="space-y-2">
             {/* Location */}
             <div className="flex items-center space-x-2 text-gray-600 text-sm">
-              <MapPin className="w-4 h-4 text-purple-500" />
-              <span>{designer.location}</span>
+              <MapPin className="w-4 h-4 text-purple-500 flex-shrink-0" />
+              <span className="truncate">{designer.location}</span>
             </div>
 
             {/* Working Hours */}
             <div className="flex items-center space-x-2 text-gray-600 text-sm">
-              <Clock className="w-4 h-4 text-green-500" />
-              <span>{designer.workingHours}</span>
+              <Clock className="w-4 h-4 text-green-500 flex-shrink-0" />
+              <span className="truncate">{designer.workingHours}</span>
             </div>
 
             {/* Phone */}
             <div className="flex items-center space-x-2 text-gray-600 text-sm">
-              <Phone className="w-4 h-4 text-blue-500" />
-              <span>{designer.phone}</span>
+              <Phone className="w-4 h-4 text-blue-500 flex-shrink-0" />
+              <span className="truncate">{designer.phone}</span>
             </div>
 
             {/* Email */}
             <div className="flex items-center space-x-2 text-gray-600 text-sm">
-              <Mail className="w-4 h-4 text-red-500" />
-              <span>{designer.email}</span>
+              <Mail className="w-4 h-4 text-red-500 flex-shrink-0" />
+              <span className="truncate">{designer.email}</span>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ const DesignerCard = ({ designer }) => {
                   key={index}
                   src={item.image}
                   alt={item.title}
-                  className="w-16 h-16 object-cover rounded-lg cursor-pointer hover:scale-110 transition-transform duration-200"
+                  className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg cursor-pointer hover:scale-110 transition-transform duration-200 flex-shrink-0"
                   onClick={() => openModal(index)}
                   onError={(e) => {
                     e.target.src = `https://via.placeholder.com/64x64/3B82F6/FFD700?text=${encodeURIComponent(item.title)}`;
@@ -155,7 +155,7 @@ const DesignerCard = ({ designer }) => {
                 />
               ))}
               {designer.portfolio.length > 4 && (
-                <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xs font-medium cursor-pointer hover:bg-purple-200 transition-colors">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xs font-medium cursor-pointer hover:bg-purple-200 transition-colors flex-shrink-0">
                   +{designer.portfolio.length - 4}
                 </div>
               )}
@@ -178,28 +178,28 @@ const DesignerCard = ({ designer }) => {
           className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={closeModal}
         >
-          <div className="relative max-w-4xl max-h-full">
+          <div className="relative max-w-4xl max-h-full w-full">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 bg-white/20 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full hover:bg-white/30 transition-colors"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
             {/* Navigation Buttons */}
             <button
               onClick={(e) => { e.stopPropagation(); prevImage(); }}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full hover:bg-white/30 transition-colors"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
             <button
               onClick={(e) => { e.stopPropagation(); nextImage(); }}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full hover:bg-white/30 transition-colors"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
             {/* Image Container */}
@@ -214,11 +214,11 @@ const DesignerCard = ({ designer }) => {
               />
               
               {/* Image Info */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm text-white p-4 rounded-lg">
-                <h3 className="text-lg font-semibold mb-1">
+              <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 bg-black/50 backdrop-blur-sm text-white p-3 sm:p-4 rounded-lg">
+                <h3 className="text-base sm:text-lg font-semibold mb-1">
                   {designer.portfolio[currentImageIndex].title}
                 </h3>
-                <p className="text-sm text-gray-200">
+                <p className="text-xs sm:text-sm text-gray-200">
                   {designer.portfolio[currentImageIndex].description}
                 </p>
                 <div className="flex items-center justify-between mt-2">

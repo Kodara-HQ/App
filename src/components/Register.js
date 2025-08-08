@@ -119,25 +119,25 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Section - Registration Form */}
-      <div className="flex-1 bg-cream-50 flex items-center justify-center p-8">
+      <div className="flex-1 bg-cream-50 flex items-center justify-center p-4 sm:p-8 order-2 lg:order-1">
         <div className="w-full max-w-md">
           {/* Branding */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-brown-800 rounded-full mb-4">
-              <Scissors className="h-8 w-8 text-white" />
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-brown-800 rounded-full mb-3 sm:mb-4">
+              <Scissors className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">FASHION DESIGNERS</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">FASHION DESIGNERS</h1>
           </div>
 
           {/* Registration Form */}
-          <div className="bg-white rounded-lg p-8 shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Create Account</h2>
+          <div className="bg-white rounded-lg p-6 sm:p-8 shadow-lg">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Create Account</h2>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name Fields */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                     First Name
@@ -335,7 +335,7 @@ const Register = () => {
       </div>
 
       {/* Right Section - Promotional Image */}
-      <div className="flex-1 relative overflow-hidden">
+      <div className="flex-1 relative overflow-hidden h-64 lg:h-auto order-1 lg:order-2">
         {/* Background Image */}
         <img 
           src="/images/login1.jpg" 
@@ -350,19 +350,19 @@ const Register = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-yellow-300/20 via-orange-400/15 to-purple-800/30"></div>
         
         {/* Content */}
-        <div className="relative z-10 flex flex-col justify-center items-center h-full p-8 text-center">
+        <div className="relative z-10 flex flex-col justify-center items-center h-full p-4 sm:p-8 text-center">
           {/* Text Content */}
           <div className="max-w-md">
-            <h2 className="text-4xl font-bold text-white mb-6 drop-shadow-2xl">
+            <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 drop-shadow-2xl">
               Join Our Community!
             </h2>
-            <p className="text-white text-xl drop-shadow-lg font-medium">
+            <p className="text-white text-lg sm:text-xl drop-shadow-lg font-medium">
               Create an account to connect with Sunyani's finest fashion designers and discover amazing styles.
             </p>
           </div>
 
           {/* Navigation Dots */}
-          <div className="absolute bottom-8 flex space-x-2">
+          <div className="absolute bottom-4 sm:bottom-8 flex space-x-2">
             <div className="w-2 h-2 bg-white/70 rounded-full"></div>
             <div className="w-3 h-3 bg-white rounded-full"></div>
             <div className="w-2 h-2 bg-white/70 rounded-full"></div>

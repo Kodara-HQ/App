@@ -81,7 +81,7 @@ const DesignerList = () => {
         <div className="px-4 sm:px-6 mb-6">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <div className="flex flex-col lg:flex-row gap-4">
+              <div className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:gap-4">
                 {/* Search Bar */}
                 <div className="flex-1">
                   <div className="relative">
@@ -97,7 +97,7 @@ const DesignerList = () => {
                 </div>
 
                 {/* Filter Dropdown */}
-                <div className="lg:w-48">
+                <div className="w-full lg:w-48">
                   <div className="relative">
                     <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                     <select
@@ -120,7 +120,7 @@ const DesignerList = () => {
                 </div>
 
                 {/* Add Button */}
-                <div className="lg:w-auto">
+                <div className="w-full lg:w-auto">
                   <Link
                     to="/add"
                     className="w-full lg:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300 shadow-sm"
