@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Plus } from 'lucide-react';
+import { Sparkles, Plus, Search, Filter } from 'lucide-react';
 import { useDesigners } from '../context/DesignerContext';
 import DesignerCard from './DesignerCard';
 
 const DesignerList = () => {
-  const { designers, filteredDesigners, loading } = useDesigners();
+  const { designers, setSearchFilters, loading } = useDesigners();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSpecialty, setSelectedSpecialty] = useState('All Specialties');
+
+  // Update search filters when search term or specialty changes
+  useEffect(() => {
+    if (setSearchFilters) {
+      setSearchFilters({
+        searchTerm,
+        selectedSpecialty
+      });
+    }
+  }, [searchTerm, selectedSpecialty, setSearchFilters]);
+
+  const specialties = ['All Specialties', ...new Set(designers.map(d => d.specialty))];
+  const filteredDesigners = designers.filter(designer => {
+    const matchesSearch = designer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         designer.specialty.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         designer.location.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSpecialty = selectedSpecialty === 'All Specialties' || designer.specialty === selectedSpecialty;
+    return matchesSearch && matchesSpecialty;
+  });
 
   if (loading) {
     return (
@@ -56,42 +77,81 @@ const DesignerList = () => {
           </div>
         </div>
 
-        {/* Results Header */}
+        {/* Search and Filter Section */}
         <div className="px-4 sm:px-6 mb-6">
-          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-            <div className="bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-              {filteredDesigners.length} Designer{filteredDesigners.length !== 1 ? 's' : ''} Found
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+              <div className="flex flex-col lg:flex-row gap-4">
+                {/* Search Bar */}
+                <div className="flex-1">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder="Search designers..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Filter Dropdown */}
+                <div className="lg:w-48">
+                  <div className="relative">
+                    <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <select
+                      value={selectedSpecialty}
+                      onChange={(e) => setSelectedSpecialty(e.target.value)}
+                      className="w-full pl-10 pr-8 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none shadow-sm"
+                    >
+                      {specialties.map(specialty => (
+                        <option key={specialty} value={specialty}>
+                          {specialty}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Add Button */}
+                <div className="lg:w-auto">
+                  <Link
+                    to="/add"
+                    className="w-full lg:w-auto bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300 shadow-sm"
+                  >
+                    <Plus className="h-5 w-5" />
+                    <span>Add New Designer</span>
+                  </Link>
+                </div>
+              </div>
             </div>
-            <Link
-              to="/add"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-lg font-medium flex items-center space-x-2 hover:shadow-lg transition-all duration-300 shadow-lg"
-            >
-              <Plus className="h-5 w-5" />
-              <span>Add New Designer</span>
-            </Link>
           </div>
         </div>
 
         {/* Designers Grid */}
         <div className="px-4 sm:px-6 pb-8">
-          {filteredDesigners.length === 0 ? (
-            <div className="text-center py-16">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto border border-white/20">
-                <div className="text-white/90 text-lg mb-2">
-                  No designers found matching your criteria
+          <div className="max-w-7xl mx-auto">
+            {filteredDesigners.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20">
+                  <p className="text-white text-lg">No designers found matching your criteria.</p>
+                  <p className="text-white/70 mt-2">Try adjusting your search or filters.</p>
                 </div>
-                <p className="text-white/70">
-                  Try adjusting your search or filter criteria
-                </p>
               </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto">
-              {filteredDesigners.map(designer => (
-                <DesignerCard key={designer.id} designer={designer} />
-              ))}
-            </div>
-          )}
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredDesigners.map((designer) => (
+                  <DesignerCard key={designer.id} designer={designer} />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
