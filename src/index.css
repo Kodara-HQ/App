@@ -29,6 +29,18 @@ body {
   color: var(--text-dark);
 }
 
+/* Mobile Safe Areas */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Ensure header is visible on mobile */
+@media (max-width: 768px) {
+  header {
+    padding-top: max(env(safe-area-inset-top, 0px), 12px);
+  }
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
