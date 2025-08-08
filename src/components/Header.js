@@ -57,23 +57,23 @@ const Header = () => {
           <div className="flex items-center space-x-1 sm:space-x-2 flex-1 max-w-xs sm:max-w-md mx-1 sm:mx-2">
             {/* Search Bar */}
             <div className="relative flex-1">
-              <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+              <Search className="absolute left-1 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-6 sm:pl-8 pr-2 sm:pr-3 py-1 sm:py-1.5 bg-white/90 border border-gray-200 rounded-md text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full pl-5 pr-2 py-1 bg-white/90 border border-gray-200 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
             </div>
 
-            {/* Filter Dropdown */}
+            {/* Filter Dropdown - Reduced size */}
             <div className="relative">
-              <Filter className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-400" />
+              <Filter className="absolute left-1 top-1/2 transform -translate-y-1/2 h-3 w-3 text-gray-400" />
               <select
                 value={selectedSpecialty}
                 onChange={(e) => setSelectedSpecialty(e.target.value)}
-                className="pl-5 sm:pl-7 pr-4 sm:pr-6 py-1 sm:py-1.5 bg-white/90 border border-gray-200 rounded-md text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none min-w-[80px] sm:min-w-[100px] md:min-w-[120px]"
+                className="pl-4 pr-3 py-1 bg-white/90 border border-gray-200 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none min-w-[60px] sm:min-w-[80px] md:min-w-[100px]"
               >
                 {specialties.map(specialty => (
                   <option key={specialty} value={specialty}>
@@ -82,7 +82,7 @@ const Header = () => {
                 ))}
               </select>
               <div className="absolute right-1 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg className="h-2 w-2 sm:h-3 sm:w-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-2 w-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -94,9 +94,9 @@ const Header = () => {
             {/* Add New Designer Button */}
             <Link
               to="/add"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded-md text-xs sm:text-sm font-medium flex items-center space-x-1 hover:shadow-md transition-all duration-200"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-1.5 sm:px-3 py-1 rounded-md text-xs font-medium flex items-center space-x-1 hover:shadow-md transition-all duration-200"
             >
-              <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
+              <Plus className="w-3 h-3" />
               <span className="hidden sm:inline">Add</span>
             </Link>
 
@@ -105,11 +105,11 @@ const Header = () => {
               <div className="relative">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm rounded-md px-1.5 sm:px-2 py-1 sm:py-1.5 text-white hover:bg-white/20 transition-colors"
+                  className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm rounded-md px-1 sm:px-2 py-1 text-white hover:bg-white/20 transition-colors"
                 >
-                  <User className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span className="text-xs sm:text-sm font-medium hidden sm:inline">{user.firstName || 'User'}</span>
-                  <ChevronDown className="w-2 h-2 sm:w-3 sm:h-3" />
+                  <User className="w-3 h-3" />
+                  <span className="text-xs font-medium hidden sm:inline">{user.firstName || 'User'}</span>
+                  <ChevronDown className="w-2 h-2" />
                 </button>
 
                 {/* Dropdown Menu */}
