@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <header className="bg-gradient-to-r from-purple-600 to-purple-700 px-4 py-3 fixed top-0 left-0 right-0 z-50 safe-top">
+      <header className="bg-gradient-to-r from-purple-600 to-purple-700 px-4 py-4 fixed top-0 left-0 right-0 z-50 safe-top" style={{ paddingTop: 'max(env(safe-area-inset-top, 0px), 20px)' }}>
         <div className="flex items-center justify-between">
           {/* Left Side - Logo and Brand */}
           <div className="flex items-center space-x-2">
@@ -139,7 +139,7 @@ const Header = () => {
       <div className="h-1 bg-orange-500 fixed top-0 left-0 right-0 z-50"></div>
 
       {/* Spacer for fixed header */}
-      <div className="h-16 sm:h-16 md:h-20"></div>
+      <div className="h-20 sm:h-20 md:h-24"></div>
     </>
   );
 };
