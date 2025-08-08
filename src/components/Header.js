@@ -15,6 +15,21 @@ const Header = () => {
     setIsDropdownOpen(false);
   };
 
+  // Get user's display name
+  const getUserDisplayName = () => {
+    if (!user) return '';
+    
+    if (user.firstName && user.lastName) {
+      return `${user.firstName} ${user.lastName}`;
+    } else if (user.firstName) {
+      return user.firstName;
+    } else if (user.email) {
+      // Fallback to email if no name is available
+      return user.email.split('@')[0]; // Show part before @
+    }
+    return 'User';
+  };
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,7 +65,7 @@ const Header = () => {
                   className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   <User className="w-4 h-4" />
-                  <span>{user.email}</span>
+                  <span>{getUserDisplayName()}</span>
                   <ChevronDown className="w-4 h-4" />
                 </button>
 
