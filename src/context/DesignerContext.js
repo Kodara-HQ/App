@@ -2,6 +2,257 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 const DesignerContext = createContext();
 
+// New designers to append (unique hero images)
+const additionalDesigners = [
+  {
+    id: 14,
+    name: 'Urban Couture',
+    specialty: 'CONTEMPORARY FASHION',
+    location: 'Sunyani East',
+    phone: '+233 24 100 1001',
+    email: 'urban.couture@gmail.com',
+    workingHours: '9am-6pm (Mon-Sat)',
+    rating: 4.6,
+    experience: '6 years',
+    description: 'Modern, city-inspired designs with bold silhouettes and premium fabrics.',
+    services: ['Custom Designs', 'Ready-to-Wear', 'Alterations', 'Personal Styling'],
+    image: '/images/African%20casual.jpg',
+    portfolio: [
+      { title: 'City Lines', description: 'Sleek contemporary fit', category: 'Contemporary', image: '/images/contemp1.jpg' },
+      { title: 'Vibrant Mood', description: 'Color-forward styling', category: 'Contemporary', image: '/images/contemp3.webp' },
+      { title: 'Everyday Edge', description: 'Casual-chic minimalism', category: 'Casual', image: '/images/Casual.jpg' }
+    ]
+  },
+  {
+    id: 15,
+    name: 'Classic Kaftans',
+    specialty: "MEN'S TRADITIONAL WEAR",
+    location: 'Sunyani Central Market',
+    phone: '+233 26 200 2002',
+    email: 'classic.kaftans@gmail.com',
+    workingHours: '8am-6pm (Mon-Sat)',
+    rating: 4.7,
+    experience: '9 years',
+    description: 'Elegant kaftans crafted with precision for comfort and presence.',
+    services: ['Kaftans', 'Custom Tailoring', 'Fittings', 'Embroidery'],
+    image: '/images/Kaftan.jpg',
+    portfolio: [
+      { title: 'Royal Thread', description: 'Detailed embroidery', category: 'Traditional', image: '/images/traditional4.jpg' },
+      { title: 'Gold Edge', description: 'Subtle metallic accents', category: 'Traditional', image: '/images/traditional5.jpg' },
+      { title: 'Classic Fit', description: 'Tailored simplicity', category: 'Traditional', image: '/images/traditional1.jpg' }
+    ]
+  },
+  {
+    id: 16,
+    name: 'Royal Weddings',
+    specialty: 'BRIDAL & CEREMONIAL',
+    location: 'Fiapre, Sunyani West',
+    phone: '+233 20 300 3003',
+    email: 'royal.weddings@gmail.com',
+    workingHours: '10am-7pm (Mon-Sat)',
+    rating: 4.9,
+    experience: '11 years',
+    description: 'Luxury bridal gowns and ceremonial attire with timeless elegance.',
+    services: ['Bridal Gowns', 'Engagement Wear', 'Veils', 'Alterations'],
+    image: '/images/wedding.jpg',
+    portfolio: [
+      { title: 'Graceful Train', description: 'Flowing bridal silhouette', category: 'Bridal', image: '/images/Bridal1.webp' },
+      { title: 'Ivory Pearl', description: 'Pearl applique details', category: 'Bridal', image: '/images/Bridal%204.webp' },
+      { title: 'Sunyani Bride', description: 'Local craftsmanship', category: 'Bridal', image: '/images/Bridal%205.webp' }
+    ]
+  },
+  {
+    id: 17,
+    name: "Gentleman's Lounge",
+    specialty: "MEN'S SUITS & FORMAL",
+    location: 'Penkwase, Sunyani',
+    phone: '+233 27 400 4004',
+    email: 'gentlemans.lounge@gmail.com',
+    workingHours: '9am-8pm (Mon-Sat)',
+    rating: 4.5,
+    experience: '7 years',
+    description: 'Tailored suits and refined formalwear for modern gentlemen.',
+    services: ['Suits', 'Tuxedos', 'Shirts', 'Alterations'],
+    image: '/images/African%20gent%20suit.jpg',
+    portfolio: [
+      { title: 'Midnight Tux', description: 'Sharp peak lapels', category: 'Formal', image: '/images/suit.jpg' },
+      { title: 'Azure Shirt', description: 'Crisp blue shirt', category: 'Formal', image: '/images/shirt.webp' },
+      { title: 'Green Edge', description: 'Style with color', category: 'Formal', image: '/images/man%20in%20green.jpeg' }
+    ]
+  },
+  {
+    id: 18,
+    name: 'African Essence',
+    specialty: 'AFRICAN PRINT & CULTURE',
+    location: 'Abesim, Sunyani',
+    phone: '+233 24 500 5005',
+    email: 'african.essence@gmail.com',
+    workingHours: '8am-6pm (Mon-Sat)',
+    rating: 4.8,
+    experience: '10 years',
+    description: 'Vibrant African prints with contemporary cuts and finishes.',
+    services: ['Print Dresses', 'Headwraps', 'Custom African Wear'],
+    image: '/images/African.jpg',
+    portfolio: [
+      { title: 'Bold Prints', description: 'Statement colors', category: 'African Print', image: '/images/print%20shirt.jpg' },
+      { title: 'Cultural Muse', description: 'Classic motifs', category: 'African Print', image: '/images/wow%20african%20lady.jpeg' },
+      { title: 'Festival Fit', description: 'Ready for events', category: 'African Print', image: '/images/nigerian%20lady.jpeg' }
+    ]
+  },
+  {
+    id: 19,
+    name: 'Elegance House',
+    specialty: "WOMEN'S EVENING WEAR",
+    location: 'Sunyani Ridge',
+    phone: '+233 20 600 6006',
+    email: 'elegance.house@gmail.com',
+    workingHours: '10am-7pm (Mon-Sat)',
+    rating: 4.6,
+    experience: '6 years',
+    description: 'Evening gowns with refined cuts and luxurious drape.',
+    services: ['Evening Gowns', 'Cocktail Dresses', 'Alterations'],
+    image: '/images/Nice%20woman.jpg',
+    portfolio: [
+      { title: 'Night Shine', description: 'Subtle shimmer', category: 'Formal', image: '/images/nice%20women.jpeg' },
+      { title: 'Silk Drape', description: 'Fluid movement', category: 'Formal', image: '/images/best%20lady.jpeg' },
+      { title: 'Glass Glow', description: 'Modern elegance', category: 'Formal', image: '/images/Lady%20in%20Glass.jpeg' }
+    ]
+  },
+  {
+    id: 20,
+    name: 'Vivid Styles',
+    specialty: 'CASUAL & STREETWEAR',
+    location: 'New Dormaa, Sunyani',
+    phone: '+233 27 700 7007',
+    email: 'vivid.styles@gmail.com',
+    workingHours: '9am-7pm (Mon-Sat)',
+    rating: 4.4,
+    experience: '4 years',
+    description: 'Playful casualwear with color pops and bold textures.',
+    services: ['Casual Sets', 'Streetwear', 'Graphics'],
+    image: '/images/Nice%20africa%20woman.jpg',
+    portfolio: [
+      { title: 'Daily Ease', description: 'Comfort-first', category: 'Casual', image: '/images/casual%20lady.jpeg' },
+      { title: 'Graphic Mood', description: 'Modern street look', category: 'Casual', image: '/images/Casual.jpg' },
+      { title: 'Bright Day', description: 'Color stories', category: 'Casual', image: '/images/yellow%20Lady.jpeg' }
+    ]
+  },
+  {
+    id: 21,
+    name: 'Heritage Attire',
+    specialty: 'TRADITIONAL & HERITAGE',
+    location: 'Sunyani Zongo',
+    phone: '+233 24 800 8008',
+    email: 'heritage.attire@gmail.com',
+    workingHours: '8am-6pm (Mon-Sat)',
+    rating: 4.7,
+    experience: '12 years',
+    description: 'Heritage garments crafted with reverence for tradition.',
+    services: ['Traditional Wear', 'Ceremonial', 'Accessories'],
+    image: '/images/normal%20african%20wear.jpg',
+    portfolio: [
+      { title: 'Cultural Pride', description: 'Heritage motifs', category: 'Traditional', image: '/images/traditional8.jpg' },
+      { title: 'Green Heritage', description: 'Earth tones', category: 'Traditional', image: '/images/traditional6.jpg' },
+      { title: 'Classic Set', description: 'Occasion wear', category: 'Traditional', image: '/images/traditional4.jpg' }
+    ]
+  },
+  {
+    id: 22,
+    name: 'Contemporary Muse',
+    specialty: 'MODERN WOMENSWEAR',
+    location: 'Fiapre Junction',
+    phone: '+233 20 900 9009',
+    email: 'contemporary.muse@gmail.com',
+    workingHours: '10am-7pm (Mon-Sat)',
+    rating: 4.5,
+    experience: '5 years',
+    description: 'Minimalist womenswear with refined shapes and tones.',
+    services: ['Dresses', 'Two-Piece Sets', 'Alterations'],
+    image: '/images/Lady%20in%20Glass.jpeg',
+    portfolio: [
+      { title: 'Soft Hue', description: 'Pastel palette', category: 'Womenswear', image: '/images/lady.webp' },
+      { title: 'Spring Ease', description: 'Light fabrics', category: 'Womenswear', image: '/images/women.jpeg' },
+      { title: 'Glass Glow', description: 'Modern finish', category: 'Womenswear', image: '/images/Lady%20print.jpg' }
+    ]
+  },
+  {
+    id: 23,
+    name: 'Green Label Menswear',
+    specialty: "MEN'S CASUAL",
+    location: 'Sunyani Stadium Area',
+    phone: '+233 27 010 0101',
+    email: 'green.label@gmail.com',
+    workingHours: '9am-8pm (Mon-Sat)',
+    rating: 4.3,
+    experience: '3 years',
+    description: 'Relaxed menswear with breathable fabrics and clean cuts.',
+    services: ['Casual Shirts', 'Trousers', 'Tees'],
+    image: '/images/man%20in%20green.jpeg',
+    portfolio: [
+      { title: 'Weekend Set', description: 'Chill fit', category: 'Men', image: '/images/men6.webp' },
+      { title: 'Denim Day', description: 'Everyday jeans', category: 'Men', image: '/images/men1.webp' },
+      { title: 'Street Cool', description: 'Urban vibe', category: 'Men', image: '/images/men.webp' }
+    ]
+  },
+  {
+    id: 24,
+    name: 'Sunyani Tailors Guild',
+    specialty: 'CUSTOM TAILORING',
+    location: 'Sunyani Magazine',
+    phone: '+233 24 020 0202',
+    email: 'tailors.guild@gmail.com',
+    workingHours: '8am-6pm (Mon-Sat)',
+    rating: 4.8,
+    experience: '18 years',
+    description: 'Collective of expert tailors delivering perfect fits.',
+    services: ['Custom Suits', 'Repairs', 'Alterations', 'Measurements'],
+    image: '/images/Nice%20man.jpg',
+    portfolio: [
+      { title: 'Sharp Cut', description: 'Tailored lines', category: 'Tailoring', image: '/images/suit.jpg' },
+      { title: 'Crisp Shirt', description: 'Essentials', category: 'Tailoring', image: '/images/shirt.webp' },
+      { title: 'Guild Work', description: 'Attention to detail', category: 'Tailoring', image: '/images/mensah.jpg' }
+    ]
+  },
+  {
+    id: 25,
+    name: 'Glass & Grace Atelier',
+    specialty: 'PREMIUM WOMENSWEAR',
+    location: 'Banana Inn, Sunyani',
+    phone: '+233 27 030 0303',
+    email: 'glass.grace@gmail.com',
+    workingHours: '10am-7pm (Mon-Sat)',
+    rating: 4.7,
+    experience: '8 years',
+    description: 'Polished womenswear with luminous finishes and fit.',
+    services: ['Eveningwear', 'Custom Dresses', 'Alterations'],
+    image: '/images/Lady%20print.jpg',
+    portfolio: [
+      { title: 'Velvet Night', description: 'Luxe feel', category: 'Womenswear', image: '/images/nice%20lady.jpeg' },
+      { title: 'Pearl Whisper', description: 'Soft sheen', category: 'Womenswear', image: '/images/Best%20lady.jpeg' },
+      { title: 'Glass Muse', description: 'Modern motifs', category: 'Womenswear', image: '/images/Lady%20in%20Glass.jpeg' }
+    ]
+  },
+  {
+    id: 26,
+    name: 'Festival Couture',
+    specialty: 'EVENT & CULTURAL',
+    location: 'Sunyani Cultural Centre',
+    phone: '+233 24 040 0404',
+    email: 'festival.couture@gmail.com',
+    workingHours: '9am-6pm (Tue-Sat)',
+    rating: 4.6,
+    experience: '6 years',
+    description: 'Bright, celebratory wear curated for special events.',
+    services: ['Event Wear', 'Headgear', 'Accessories'],
+    image: '/images/african%20wedding2.jpg',
+    portfolio: [
+      { title: 'Ceremonial Gold', description: 'Regal motifs', category: 'Event', image: '/images/african%20wedding.jpg' },
+      { title: 'Fiesta Red', description: 'Bold tones', category: 'Event', image: '/images/african%20wedding1.jpg' },
+      { title: 'Celebration', description: 'Joyful style', category: 'Event', image: '/images/african%20wedding3.jpg' }
+    ]
+  }
+];
+
 const initialState = {
   designers: [
     {
@@ -466,43 +717,31 @@ const initialState = {
       experience: "3+ years",
       description: "Professional women's wear institute with 3+ years of experience. Creating sophisticated and elegant women's fashion with attention to detail.",
       services: ["Women's Wear", "Fashion Education", "Custom Designs", "Style Consultation", "Fashion Training", "Professional Wear"],
-      image: "/images/hr1.jpeg",
+      image: "/images/hr.jpg",
       portfolio: [
         {
-          title: "Professional Elegance",
-          description: "Sophisticated women's wear",
+          title: "HR Lookbook 1",
+          description: "Signature institute style",
           category: "Women's Wear",
-          image: "/images/ladies5.jpeg"
+          image: "/images/hr1.jpeg"
         },
         {
-          title: "Institute Style",
-          description: "Professional women's fashion",
+          title: "HR Lookbook 2",
+          description: "Elegant formal ensemble",
           category: "Women's Wear",
-          image: "/images/ladiess.jpeg"
+          image: "/images/hr2.jpg"
         },
         {
-          title: "Fashion Education",
-          description: "Educational fashion designs",
+          title: "HR Lookbook 3",
+          description: "Modern tailored design",
           category: "Women's Wear",
-          image: "/images/lady.webp"
+          image: "/images/hr3.jpg"
         },
         {
-          title: "Women's Professional",
-          description: "Professional women's clothing",
+          title: "HR Feature",
+          description: "Institute hero showcase",
           category: "Women's Wear",
-          image: "/images/lady.jpeg"
-        },
-        {
-          title: "Institute Fashion",
-          description: "Fashion institute designs",
-          category: "Women's Wear",
-          image: "/images/lady2.jpeg"
-        },
-        {
-          title: "Women's Elegance",
-          description: "Elegant women's wear",
-          category: "Women's Wear",
-          image: "/images/ladies.webp"
+          image: "/images/hr.jpg"
         }
       ]
     },
@@ -661,7 +900,9 @@ const initialState = {
           image: "/images/ladies2.jpeg"
         }
       ]
-    }
+    },
+    // Appended designers
+    ...additionalDesigners
   ],
   searchFilters: {
     searchTerm: '',
@@ -718,6 +959,8 @@ export const DesignerProvider = ({ children }) => {
       dispatch({ type: 'SET_DESIGNERS', payload: JSON.parse(savedDesigners) });
     }
   }, []);
+
+  // Additional designers are already merged into the initial state above.
 
   // Save designers to localStorage whenever they change
   useEffect(() => {
