@@ -23,21 +23,6 @@ const DesignerCard = ({ designer }) => {
     return stars;
   };
 
-  // Get a unique image for each designer based on their ID
-  const getDesignerImage = (designer) => {
-    const imageMap = {
-      1: "/images/Bridal.webp", // Jaka Designs - Bridal
-      2: "/images/contemp.webp", // byijay - Contemporary
-      3: "/images/casual lady.jpeg", // Elegant Stitches - Casual
-      4: "/images/traditional.webp", // Traditional Threads - Traditional
-      5: "/images/men.webp", // Men's Fashion Hub - Men's
-      6: "/images/child.webp", // Children's Fashion - Children's
-      7: "/images/african print.jpg" // African Prints - African Print
-    };
-    
-    return imageMap[designer.id] || designer.image || "/images/bijay.jpg";
-  };
-
   const openModal = (index = 0) => {
     setCurrentImageIndex(index);
     setShowModal(true);
@@ -65,7 +50,7 @@ const DesignerCard = ({ designer }) => {
         {/* Top Section - Image with Badges */}
         <div className="relative h-48 overflow-hidden">
           <img
-            src={getDesignerImage(designer)}
+            src={designer.image || (designer.portfolio?.[0]?.image) || '/images/dashboard.jpg'}
             alt={designer.name}
             className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
             onClick={() => openModal(0)}

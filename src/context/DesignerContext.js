@@ -16,7 +16,7 @@ const initialState = {
       experience: "10 years",
       description: "Specializing in exquisite bridal gowns and formal wear. Creating timeless pieces that make every bride feel like a princess on their special day.",
       services: ["Bridal Gowns", "Wedding Dresses", "Formal Wear", "Evening Gowns", "Custom Fittings", "Alterations"],
-      image: "/images/bijay.jpg",
+      image: "/images/Bridal.webp",
       portfolio: [
         {
           title: "Elegant Bridal Gown",
@@ -80,7 +80,7 @@ const initialState = {
       experience: "8 years",
       description: "Creative fashion designer bringing innovative designs to life. Specializing in contemporary fashion that combines style with comfort.",
       services: ["Custom Designs", "Fashion Consultation", "Style Makeovers", "Trend Analysis", "Personal Styling", "Fashion Shows"],
-      image: "/images/bijay.jpg",
+      image: "/images/contemp2.jpg",
       portfolio: [
         {
           title: "Contemporary Fashion",
@@ -126,13 +126,13 @@ const initialState = {
       experience: "5 years",
       description: "Creating comfortable and stylish everyday wear. Specializing in casual fashion that's both trendy and practical for daily life.",
       services: ["Casual Wear", "Everyday Dresses", "Comfortable Fashion", "Style Consultation", "Alterations", "Custom Fittings"],
-      image: "/images/casual lady.jpeg",
+      image: "/images/casual%20lady.jpeg",
       portfolio: [
         {
           title: "Casual Comfort",
           description: "Comfortable everyday wear with style",
           category: "Casual",
-          image: "/images/casual lady.jpeg"
+          image: "/images/casual%20lady.jpeg"
         },
         {
           title: "Everyday Elegance",
@@ -172,7 +172,7 @@ const initialState = {
       experience: "15 years",
       description: "Preserving cultural heritage through traditional fashion. Specializing in authentic traditional wear that celebrates Ghanaian culture and heritage.",
       services: ["Traditional Wear", "Cultural Dresses", "Heritage Fashion", "Custom Traditional", "Cultural Consultation", "Traditional Accessories"],
-      image: "/images/traditional.webp",
+      image: "/images/traditional3.webp",
       portfolio: [
         {
           title: "Traditional Elegance",
@@ -230,7 +230,7 @@ const initialState = {
       experience: "12 years",
       description: "Dedicated to men's fashion and style. Creating sophisticated and modern men's wear that combines comfort with elegance.",
       services: ["Men's Suits", "Formal Wear", "Casual Men's Fashion", "Style Consultation", "Custom Tailoring", "Men's Accessories"],
-      image: "/images/men.webp",
+      image: "/images/men7.webp",
       portfolio: [
         {
           title: "Men's Formal",
@@ -282,7 +282,7 @@ const initialState = {
       experience: "8 years",
       description: "Creating adorable and comfortable fashion for children. Specializing in children's wear that's both cute and practical for active kids.",
       services: ["Children's Dresses", "Kids Fashion", "School Uniforms", "Party Wear", "Comfortable Kids Wear", "Custom Children's"],
-      image: "/images/child.webp",
+      image: "/images/child2.webp",
       portfolio: [
         {
           title: "Children's Elegance",
@@ -322,31 +322,31 @@ const initialState = {
       experience: "10 years",
       description: "Celebrating African culture through vibrant prints and designs. Specializing in African print fashion that showcases the beauty of African textiles.",
       services: ["African Prints", "Cultural Fashion", "Print Dresses", "African Style", "Custom African Wear", "Print Accessories"],
-      image: "/images/african print.jpg",
+      image: "/images/african%20print.jpg",
       portfolio: [
         {
           title: "African Beauty",
           description: "Vibrant African print fashion",
           category: "African Print",
-          image: "/images/african print.jpg"
+          image: "/images/african%20print.jpg"
         },
         {
           title: "African Elegance",
           description: "Elegant African print designs",
           category: "African Print",
-          image: "/images/print shirt.jpg"
+          image: "/images/print%20shirt.jpg"
         },
         {
           title: "Cultural Prints",
           description: "Traditional African print wear",
           category: "African Print",
-          image: "/images/wow african lady.jpeg"
+          image: "/images/wow%20african%20lady.jpeg"
         },
         {
           title: "African Style",
           description: "Modern African print fashion",
           category: "African Print",
-          image: "/images/nigerian lady.jpeg"
+          image: "/images/nigerian%20lady.jpeg"
         }
       ]
     },
@@ -362,31 +362,31 @@ const initialState = {
       experience: "6 years",
       description: "Specializing in beautiful African clothing and traditional wear. Creating authentic African fashion that celebrates culture and heritage with modern elegance.",
       services: ["African Clothing", "Traditional Wear", "Cultural Dresses", "African Prints", "Custom African Wear", "Cultural Consultation"],
-      image: "/images/african print.jpg",
+      image: "/images/Lady%20face%20back.jpeg",
       portfolio: [
         {
           title: "African Elegance",
           description: "Beautiful African print dress",
           category: "African Clothing",
-          image: "/images/african print.jpg"
+          image: "/images/african%20print.jpg"
         },
         {
           title: "Traditional Beauty",
           description: "Authentic African traditional wear",
           category: "African Clothing",
-          image: "/images/wow african lady.jpeg"
+          image: "/images/wow%20african%20lady.jpeg"
         },
         {
           title: "Cultural Fashion",
           description: "African cultural clothing",
           category: "African Clothing",
-          image: "/images/nigerian lady.jpeg"
+          image: "/images/nigerian%20lady.jpeg"
         },
         {
           title: "African Style",
           description: "Modern African fashion",
           category: "African Clothing",
-          image: "/images/print shirt.jpg"
+          image: "/images/print%20shirt.jpg"
         },
         {
           title: "Heritage Wear",
@@ -414,7 +414,7 @@ const initialState = {
       experience: "5+ years",
       description: "Creative women's fashion design with over 5 years of experience. Specializing in beautiful women's fashion that combines style, comfort, and elegance.",
       services: ["Women's Fashion Design", "Custom Dresses", "Fashion Consultation", "Style Makeovers", "Personal Styling", "Alterations"],
-      image: "/images/lady.jpeg",
+      image: "/images/ladies3.webp",
       portfolio: [
         {
           title: "Women's Elegance",
@@ -466,7 +466,7 @@ const initialState = {
       experience: "3+ years",
       description: "Professional women's wear institute with 3+ years of experience. Creating sophisticated and elegant women's fashion with attention to detail.",
       services: ["Women's Wear", "Fashion Education", "Custom Designs", "Style Consultation", "Fashion Training", "Professional Wear"],
-      image: "/images/ladies5.jpeg",
+      image: "/images/hr1.jpeg",
       portfolio: [
         {
           title: "Professional Elegance",
@@ -518,7 +518,7 @@ const initialState = {
       experience: "4 years",
       description: "Creative women's fashion designer bringing unique designs to life. Specializing in women's fashion that combines creativity with wearability.",
       services: ["Women's Fashion Design", "Custom Creations", "Style Consultation", "Fashion Design", "Personal Styling", "Alterations"],
-      image: "/images/lady.jpeg",
+      image: "/images/suit.jpg",
       portfolio: [
         {
           title: "Derby Designs",
@@ -570,7 +570,7 @@ const initialState = {
       experience: "5+ years",
       description: "Established women's fashion designer with over 5 years of experience. Creating beautiful and trendy women's fashion that makes every woman feel confident.",
       services: ["Women's Fashion Design", "Trendy Designs", "Custom Fashion", "Style Consultation", "Fashion Shows", "Personal Styling"],
-      image: "/images/lady.jpeg",
+      image: "/images/women1.jpeg",
       portfolio: [
         {
           title: "Paykus Style",
@@ -622,7 +622,7 @@ const initialState = {
       experience: "7 years",
       description: "Premium custom fashion designer creating sophisticated and classy designs. Specializing in custom fashion for discerning clients who appreciate quality and elegance.",
       services: ["Custom Fashion Design", "Premium Designs", "Classy Fashion", "Personal Consultation", "Custom Tailoring", "Luxury Fashion"],
-      image: "/images/suit.jpg",
+      image: "/images/men10.jpeg",
       portfolio: [
         {
           title: "Classy Elegance",
