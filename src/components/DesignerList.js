@@ -8,6 +8,8 @@ const DesignerList = () => {
   const { designers, setSearchFilters, loading } = useDesigners();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('All Specialties');
+  const INITIAL_VISIBLE = 3;
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   // Update search filters when search term or specialty changes
   useEffect(() => {
@@ -19,6 +21,11 @@ const DesignerList = () => {
     }
   }, [searchTerm, selectedSpecialty, setSearchFilters]);
 
+  // Reset visible items when filters/search change or when designers list updates
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE);
+  }, [searchTerm, selectedSpecialty, designers.length]);
+
   const specialties = ['All Specialties', ...new Set(designers.map(d => d.specialty))];
   const filteredDesigners = designers.filter(designer => {
     const matchesSearch = designer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -27,6 +34,8 @@ const DesignerList = () => {
     const matchesSpecialty = selectedSpecialty === 'All Specialties' || designer.specialty === selectedSpecialty;
     return matchesSearch && matchesSpecialty;
   });
+
+  const displayedDesigners = filteredDesigners.slice(0, visibleCount);
 
   if (loading) {
     return (
@@ -145,11 +154,25 @@ const DesignerList = () => {
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredDesigners.map((designer) => (
-                  <DesignerCard key={designer.id} designer={designer} />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 items-stretch">
+                  {displayedDesigners.map((designer) => (
+                    <div key={designer.id} className="h-full">
+                      <DesignerCard designer={designer} />
+                    </div>
+                  ))}
+                </div>
+                {visibleCount < filteredDesigners.length && (
+                  <div className="flex justify-center mt-8">
+                    <button
+                      onClick={() => setVisibleCount((c) => Math.min(c + INITIAL_VISIBLE, filteredDesigners.length))}
+                      className="bg-white/90 hover:bg-white text-purple-700 px-6 py-3 rounded-lg font-medium shadow-md transition-colors"
+                    >
+                      View more ({filteredDesigners.length - visibleCount} more)
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

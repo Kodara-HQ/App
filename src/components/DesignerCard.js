@@ -46,7 +46,7 @@ const DesignerCard = ({ designer }) => {
 
   return (
     <>
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
         {/* Top Section - Image with Badges */}
         <div className="relative h-48 overflow-hidden">
           <img
@@ -77,7 +77,7 @@ const DesignerCard = ({ designer }) => {
         </div>
 
         {/* Bottom Section - Details */}
-        <div className="p-4 sm:p-6">
+        <div className="p-4 sm:p-6 flex-1 flex flex-col">
           {/* Designer Name */}
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
             {designer.name}
@@ -150,7 +150,7 @@ const DesignerCard = ({ designer }) => {
           {/* View Details Button */}
           <Link
             to={`/designer/${designer.id}`}
-            className="mt-4 w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 rounded-xl font-medium flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="mt-auto w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 rounded-xl font-medium flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             <span>View Details</span>
           </Link>
