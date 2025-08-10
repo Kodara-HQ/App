@@ -396,18 +396,7 @@ const initialState = {
       image: "/images/traditional3.webp",
       portfolio: [
        
-        {
-          title: "Cultural Heritage",
-          description: "Traditional dress celebrating culture",
-          category: "Traditional",
-          image: "/images/african woman6.jpg"
-        },
-        {
-          title: "Heritage Fashion",
-          description: "Cultural wear with modern touches",
-          category: "Traditional",
-          image: "/images/african woman5.jpg"
-        },
+       
         {
           title: "Traditional Beauty",
           description: "Authentic traditional designs",
