@@ -20,7 +20,8 @@ const additionalDesigners = [
     portfolio: [
       { title: 'City Lines', description: 'Sleek contemporary fit', category: 'Contemporary', image: '/images/contemp1.jpg' },
       { title: 'Vibrant Mood', description: 'Color-forward styling', category: 'Contemporary', image: '/images/contemp3.webp' },
-      { title: 'Everyday Edge', description: 'Casual-chic minimalism', category: 'Casual', image: '/images/Casual.jpg' }
+      { title: 'Everyday Edge', description: 'Casual-chic minimalism', category: 'Casual', image: '/images/Casual.jpg' },
+      { title: 'African Style', description: 'Modern African fashion', category: 'African Clothing', image: '/images/african%20casual.jpg' }
     ]
   },
   {
@@ -95,8 +96,8 @@ const additionalDesigners = [
     image: '/images/African.jpg',
     portfolio: [
       { title: 'Bold Prints', description: 'Statement colors', category: 'African Print', image: '/images/print%20shirt.jpg' },
-      { title: 'Cultural Muse', description: 'Classic motifs', category: 'African Print', image: '/images/wow%20african%20lady.jpeg' },
-      { title: 'Festival Fit', description: 'Ready for events', category: 'African Print', image: '/images/nigerian%20lady.jpeg' }
+      { title: 'Cultural Muse', description: 'Classic motifs', category: 'African Print', image: '/images/African.jpg' },
+      { title: 'Festival Fit', description: 'Ready for events', category: 'African Print', image: '/images/African casual.jpg' }
     ]
   },
   {
@@ -132,7 +133,7 @@ const additionalDesigners = [
     services: ['Casual Sets', 'Streetwear', 'Graphics'],
     image: '/images/Nice%20africa%20woman.jpg',
     portfolio: [
-      { title: 'Daily Ease', description: 'Comfort-first', category: 'Casual', image: '/images/casual%20lady.jpeg' },
+      { title: 'Daily Ease', description: 'Comfort-first', category: 'Casual', image: '/images/women1.jpeg' },
       { title: 'Graphic Mood', description: 'Modern street look', category: 'Casual', image: '/images/Casual.jpg' },
       { title: 'Bright Day', description: 'Color stories', category: 'Casual', image: '/images/yellow%20Lady.jpeg' }
     ]
@@ -168,7 +169,7 @@ const additionalDesigners = [
     experience: '5 years',
     description: 'Minimalist womenswear with refined shapes and tones.',
     services: ['Dresses', 'Two-Piece Sets', 'Alterations'],
-    image: '/images/Lady%20in%20Glass.jpeg',
+    image: '/images/Lady%20print.jpg',
     portfolio: [
       { title: 'Soft Hue', description: 'Pastel palette', category: 'Womenswear', image: '/images/lady.webp' },
       { title: 'Spring Ease', description: 'Light fabrics', category: 'Womenswear', image: '/images/women.jpeg' },
@@ -208,9 +209,9 @@ const additionalDesigners = [
     services: ['Custom Suits', 'Repairs', 'Alterations', 'Measurements'],
     image: '/images/Nice%20man.jpg',
     portfolio: [
-      { title: 'Sharp Cut', description: 'Tailored lines', category: 'Tailoring', image: '/images/suit.jpg' },
-      { title: 'Crisp Shirt', description: 'Essentials', category: 'Tailoring', image: '/images/shirt.webp' },
-      { title: 'Guild Work', description: 'Attention to detail', category: 'Tailoring', image: '/images/mensah.jpg' }
+      { title: 'Sharp Cut', description: 'Tailored lines', category: 'Tailoring', image: '/images/mensah.jpg' },
+      { title: 'Crisp Shirt', description: 'Essentials', category: 'Tailoring', image: '/images/men7.webp' },
+      { title: 'Guild Work', description: 'Attention to detail', category: 'Tailoring', image: '/images/men9.webp' }
     ]
   },
   {
@@ -225,11 +226,11 @@ const additionalDesigners = [
     experience: '8 years',
     description: 'Polished womenswear with luminous finishes and fit.',
     services: ['Eveningwear', 'Custom Dresses', 'Alterations'],
-    image: '/images/Lady%20print.jpg',
+    image: '/images/Lady%20in%20Glass.jpeg', 
     portfolio: [
       { title: 'Velvet Night', description: 'Luxe feel', category: 'Womenswear', image: '/images/nice%20lady.jpeg' },
-      { title: 'Pearl Whisper', description: 'Soft sheen', category: 'Womenswear', image: '/images/Best%20lady.jpeg' },
-      { title: 'Glass Muse', description: 'Modern motifs', category: 'Womenswear', image: '/images/Lady%20in%20Glass.jpeg' }
+      { title: 'Pearl Whisper', description: 'Soft sheen', category: 'Womenswear', image: '/images/ladylove.jpeg' },
+      { title: 'Glass Muse', description: 'Modern motifs', category: 'Womenswear', image: '/images/lady2.jpeg' }
     ]
   },
   {
@@ -287,18 +288,7 @@ const initialState = {
           category: "Formal",
           image: "/images/Bridal2.webp"
         },
-        {
-          title: "Royal Wedding Dress",
-          description: "Regal wedding dress with majestic presence",
-          category: "Bridal",
-          image: "/images/Bridal%204.webp"
-        },
-        {
-          title: "Modern Bridal Design",
-          description: "Contemporary bridal fashion with clean lines",
-          category: "Bridal",
-          image: "/images/Bridal%205.webp"
-        },
+        
         {
           title: "Luxury Bridal Collection",
           description: "Premium bridal wear for the discerning bride",
@@ -311,12 +301,7 @@ const initialState = {
           category: "Formal",
           image: "/images/big%20lady.jpeg"
         },
-        {
-          title: "Casual Elegance",
-          description: "Comfortable yet stylish casual wear",
-          category: "Casual",
-          image: "/images/casual%20lady.jpeg"
-        }
+        
       ]
     },
     {
@@ -333,12 +318,7 @@ const initialState = {
       services: ["Custom Designs", "Fashion Consultation", "Style Makeovers", "Trend Analysis", "Personal Styling", "Fashion Shows"],
       image: "/images/contemp2.jpg",
       portfolio: [
-        {
-          title: "Contemporary Fashion",
-          description: "Modern fashion design with bold statements",
-          category: "Contemporary",
-          image: "/images/contemp.webp"
-        },
+        
         {
           title: "Urban Style",
           description: "City-inspired fashion for the modern woman",
@@ -351,12 +331,7 @@ const initialState = {
           category: "Contemporary",
           image: "/images/contemp2.jpg"
         },
-        {
-          title: "Modern Elegance",
-          description: "Sophisticated contemporary designs",
-          category: "Contemporary",
-          image: "/images/contemp3.webp"
-        },
+       
         {
           title: "Urban Chic",
           description: "City style with contemporary flair",
@@ -379,12 +354,7 @@ const initialState = {
       services: ["Casual Wear", "Everyday Dresses", "Comfortable Fashion", "Style Consultation", "Alterations", "Custom Fittings"],
       image: "/images/casual%20lady.jpeg",
       portfolio: [
-        {
-          title: "Casual Comfort",
-          description: "Comfortable everyday wear with style",
-          category: "Casual",
-          image: "/images/casual%20lady.jpeg"
-        },
+        
         {
           title: "Everyday Elegance",
           description: "Simple yet elegant daily wear",
@@ -401,13 +371,13 @@ const initialState = {
           title: "Casual Chic",
           description: "Trendy casual wear for modern women",
           category: "Casual",
-          image: "/images/ladies.webp"
+          image: "/images/normal african wear.jpg"
         },
         {
           title: "Everyday Fashion",
           description: "Practical yet stylish daily wear",
           category: "Casual",
-          image: "/images/ladies1.webp"
+          image: "/images/Kaftan.jpg"
         }
       ]
     },
@@ -425,23 +395,18 @@ const initialState = {
       services: ["Traditional Wear", "Cultural Dresses", "Heritage Fashion", "Custom Traditional", "Cultural Consultation", "Traditional Accessories"],
       image: "/images/traditional3.webp",
       portfolio: [
-        {
-          title: "Traditional Elegance",
-          description: "Authentic traditional Ghanaian wear",
-          category: "Traditional",
-          image: "/images/traditional.webp"
-        },
+       
         {
           title: "Cultural Heritage",
           description: "Traditional dress celebrating culture",
           category: "Traditional",
-          image: "/images/traditional1.jpg"
+          image: "/images/african woman6.jpg"
         },
         {
           title: "Heritage Fashion",
           description: "Cultural wear with modern touches",
           category: "Traditional",
-          image: "/images/traditional3.webp"
+          image: "/images/african woman5.jpg"
         },
         {
           title: "Traditional Beauty",
@@ -499,26 +464,11 @@ const initialState = {
           title: "Men's Casual",
           description: "Comfortable men's casual wear",
           category: "Men's Fashion",
-          image: "/images/men6.webp"
+          image: "/images/suit.jpg"
         },
-        {
-          title: "Men's Elegance",
-          description: "Elegant men's fashion designs",
-          category: "Men's Fashion",
-          image: "/images/men7.webp"
-        },
-        {
-          title: "Men's Style",
-          description: "Trendy men's fashion",
-          category: "Men's Fashion",
-          image: "/images/men9.webp"
-        },
-        {
-          title: "Men's Fashion",
-          description: "Contemporary men's style",
-          category: "Men's Fashion",
-          image: "/images/men10.jpeg"
-        }
+
+        
+        
       ]
     },
     {
@@ -576,16 +526,17 @@ const initialState = {
       image: "/images/african%20print.jpg",
       portfolio: [
         {
-          title: "African Beauty",
-          description: "Vibrant African print fashion",
-          category: "African Print",
-          image: "/images/african%20print.jpg"
+          title: "Traditional Elegance",
+          description: "Authentic traditional Ghanaian wear",
+          category: "Traditional",
+          image: "/images/traditional.webp"
         },
+        
         {
           title: "African Elegance",
           description: "Elegant African print designs",
           category: "African Print",
-          image: "/images/print%20shirt.jpg"
+          image: "/images/african print.jpg"
         },
         {
           title: "Cultural Prints",
@@ -597,7 +548,7 @@ const initialState = {
           title: "African Style",
           description: "Modern African print fashion",
           category: "African Print",
-          image: "/images/nigerian%20lady.jpeg"
+          image: "/images/African man.jpg"
         }
       ]
     },
@@ -619,37 +570,27 @@ const initialState = {
           title: "African Elegance",
           description: "Beautiful African print dress",
           category: "African Clothing",
-          image: "/images/african%20print.jpg"
+          image: "/images/african gent.jpg"
         },
         {
           title: "Traditional Beauty",
           description: "Authentic African traditional wear",
           category: "African Clothing",
-          image: "/images/wow%20african%20lady.jpeg"
+          image: "/images/african gent suit.jpg"
         },
-        {
-          title: "Cultural Fashion",
-          description: "African cultural clothing",
-          category: "African Clothing",
-          image: "/images/nigerian%20lady.jpeg"
-        },
-        {
-          title: "African Style",
-          description: "Modern African fashion",
-          category: "African Clothing",
-          image: "/images/print%20shirt.jpg"
-        },
+        
+        
         {
           title: "Heritage Wear",
           description: "Traditional African heritage clothing",
           category: "African Clothing",
-          image: "/images/traditional.webp"
+          image: "/images/Nice woman.jpg"
         },
         {
           title: "African Prints",
           description: "Vibrant African print designs",
           category: "African Clothing",
-          image: "/images/traditional1.jpg"
+          image: "/images/Nice africa woman.jpg"
         }
       ]
     },
@@ -671,38 +612,33 @@ const initialState = {
           title: "Women's Elegance",
           description: "Beautiful women's fashion design",
           category: "Women's Fashion",
-          image: "/images/lady.jpeg"
+          image: "/images/african woman6.jpg"
         },
         {
           title: "Fashion Forward",
           description: "Trendy women's fashion",
           category: "Women's Fashion",
-          image: "/images/lady2.jpeg"
+          image: "/images/wedding.jpg"
         },
         {
           title: "Style & Grace",
           description: "Elegant women's wear",
           category: "Women's Fashion",
-          image: "/images/ladies.webp"
+          image: "/images/group%20lady.jpeg"
         },
         {
           title: "Modern Women",
           description: "Contemporary women's fashion",
           category: "Women's Fashion",
-          image: "/images/ladies1.webp"
+          image: "/images/african woman.jpg"
         },
         {
           title: "Fashion Beauty",
           description: "Beautiful women's designs",
           category: "Women's Fashion",
-          image: "/images/ladies2.jpeg"
+          image: "/images/african woman5.jpg"
         },
-        {
-          title: "Women's Style",
-          description: "Stylish women's fashion",
-          category: "Women's Fashion",
-          image: "/images/ladies3.webp"
-        }
+        
       ]
     },
     {
@@ -759,41 +695,25 @@ const initialState = {
       services: ["Women's Fashion Design", "Custom Creations", "Style Consultation", "Fashion Design", "Personal Styling", "Alterations"],
       image: "/images/suit.jpg",
       portfolio: [
-        {
-          title: "Derby Designs",
-          description: "Unique women's fashion",
-          category: "Women's Fashion",
-          image: "/images/lady.jpeg"
-        },
-        {
-          title: "Creative Fashion",
-          description: "Creative women's designs",
-          category: "Women's Fashion",
-          image: "/images/lady2.jpeg"
-        },
+       
         {
           title: "Fashion Innovation",
           description: "Innovative women's fashion",
           category: "Women's Fashion",
-          image: "/images/ladies.webp"
+          image: "/images/nice lady.jpeg"
         },
-        {
-          title: "Style Creation",
-          description: "Creative style designs",
-          category: "Women's Fashion",
-          image: "/images/ladies1.webp"
-        },
+        
         {
           title: "Women's Innovation",
           description: "Innovative women's wear",
           category: "Women's Fashion",
-          image: "/images/ladies2.jpeg"
+          image: "/images/big lady.jpeg"
         },
         {
           title: "Fashion Creativity",
           description: "Creative fashion designs",
           category: "Women's Fashion",
-          image: "/images/ladies3.webp"
+          image: "/images/Lady face back.jpeg"
         }
       ]
     },
@@ -815,37 +735,32 @@ const initialState = {
           title: "Paykus Style",
           description: "Trendy women's fashion",
           category: "Women's Fashion",
-          image: "/images/lady.jpeg"
+          image: "/images/women1.jpeg"
         },
         {
           title: "Fashion Trends",
           description: "Latest fashion trends",
           category: "Women's Fashion",
-          image: "/images/lady2.jpeg"
+          image: "/images/women.jpeg"
         },
-        {
-          title: "Style Confidence",
-          description: "Confident women's fashion",
-          category: "Women's Fashion",
-          image: "/images/ladies.webp"
-        },
+        
         {
           title: "Trendy Designs",
           description: "Trendy fashion designs",
           category: "Women's Fashion",
-          image: "/images/ladies1.webp"
+          image: "/images/Lady print.jpg"
         },
         {
           title: "Women's Confidence",
           description: "Confident women's wear",
           category: "Women's Fashion",
-          image: "/images/ladies2.jpeg"
+          image: "/images/dance lady.jpeg"
         },
         {
           title: "Fashion Trends",
           description: "Trendy fashion styles",
           category: "Women's Fashion",
-          image: "/images/ladies3.webp"
+          image: "/images/ladylove.jpeg"
         }
       ]
     },
@@ -869,36 +784,20 @@ const initialState = {
           category: "Custom Fashion",
           image: "/images/suit.jpg"
         },
-        {
-          title: "Premium Fashion",
-          description: "Premium custom fashion",
-          category: "Custom Fashion",
-          image: "/images/lady.jpeg"
-        },
-        {
-          title: "Luxury Designs",
-          description: "Luxury custom fashion",
-          category: "Custom Fashion",
-          image: "/images/lady2.jpeg"
-        },
+       
         {
           title: "Classy Style",
           description: "Classy fashion designs",
           category: "Custom Fashion",
-          image: "/images/ladies.webp"
+          image: "/images/contemp.webp"
         },
         {
           title: "Premium Elegance",
           description: "Premium elegant fashion",
           category: "Custom Fashion",
-          image: "/images/ladies1.webp"
+          image: "/images/contemp1.jpg"
         },
-        {
-          title: "Luxury Classy",
-          description: "Luxury classy designs",
-          category: "Custom Fashion",
-          image: "/images/ladies2.jpeg"
-        }
+       
       ]
     },
     // Appended designers
