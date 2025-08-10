@@ -561,13 +561,7 @@ const initialState = {
           category: "African Clothing",
           image: "/images/african gent.jpg"
         },
-        {
-          title: "Traditional Beauty",
-          description: "Authentic African traditional wear",
-          category: "African Clothing",
-          image: "/images/african gent suit.jpg"
-        },
-        
+       
         
         {
           title: "Heritage Wear",
@@ -597,12 +591,7 @@ const initialState = {
       services: ["Women's Fashion Design", "Custom Dresses", "Fashion Consultation", "Style Makeovers", "Personal Styling", "Alterations"],
       image: "/images/ladies3.webp",
       portfolio: [
-        {
-          title: "Women's Elegance",
-          description: "Beautiful women's fashion design",
-          category: "Women's Fashion",
-          image: "/images/african woman6.jpg"
-        },
+        
         {
           title: "Fashion Forward",
           description: "Trendy women's fashion",
